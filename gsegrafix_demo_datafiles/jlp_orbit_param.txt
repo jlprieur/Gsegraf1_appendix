@@ -1,0 +1,56 @@
+file_name               "jlp_orbit.txt"
+file_format             "%lf %lf %*lf %*lf"
+plot_type               "points"
+plot_style              lr
+
+file_name               "jlp_orbit.txt"
+file_format             "%*lf %*lf %lf %lf"
+plot_type               "points"
+plot_style              lr
+
+#file_name               "jlp_orbit_lines.txt"
+#file_format             "%lf %lf"
+#plot_type               "points"
+#plot_style              lr
+
+axis_type               "linear"
+axis_scale              "equal"
+
+axis_limits             * * -20000 30000
+
+grid                    ls
+
+xlabel                  "x axis (km)"
+ylabel                  "y axis (km)"
+title                   "Orbit"
+
+symbol_coords           3.46440e+04 1.51700e+04
+symbol_style            Ck6
+
+text_string             "Earth"
+text_coords_abs         0.0 0.0
+text_anchor             "center"
+
+text_string             "satellite"
+text_coords_abs         3.51440e+04 1.56700e+04
+text_anchor             "southwest"
+
+text_string             "Orbit parameters:"
+text_string             "period = 12 hr"
+text_string             "eccentricity = 0.7"
+text_coords_rel         0.03 0.97
+text_anchor             "northwest"
+
+text_string             "Lines between orbit and ground track drawn"
+text_string             "at equal time increments of 10 minutes."
+text_string             "Much more time spent near apogee than"
+text_string             "near perigee."
+text_coords_rel         0.97 0.97
+text_anchor             "northeast"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

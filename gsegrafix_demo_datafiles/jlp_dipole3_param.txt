@@ -1,0 +1,32 @@
+file_name               "jlp_dipole.txt"
+file_format             "%lf %*lf %lf"
+plot_type               "points"
+plot_style              lk
+
+axis_type               "polar"
+
+axis_limits             * * -40 0
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "\xCE\xB8 (deg)"
+ylabel                  "gain (dB)"
+title                   "Normalized Gain of Half-Wavelength Dipole Antenna"
+
+# Linux background image 
+background_image          "Tux.jpg" "fill"
+
+text_string             "Angles measured from antenna axis."
+text_string             "3-dB beam width = 78 deg"
+text_coords_rel         1.0 0.1
+text_anchor             "northwest"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18
+

@@ -1,0 +1,19 @@
+file_name               "./jlp_mandelbrot.txt"
+plot_type               "color"
+plot_style              "bilinear" 0 10000
+
+axis_type               "linear"
+
+axis_limits             * * * * * 4 
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+zlabel                  "count"
+title                   "Mandelbrot set"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

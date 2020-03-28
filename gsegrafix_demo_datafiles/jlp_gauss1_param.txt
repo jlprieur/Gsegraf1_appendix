@@ -1,0 +1,37 @@
+file_name               "jlp_gauss_data.txt"
+file_format             "%lf"
+plot_type               "histogram"
+plot_style              lk
+
+file_name               "jlp_gauss_theory.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              lr
+
+axis_type               "linear"
+
+zzgrid                    ls
+
+xlabel                  "x axis"
+ylabel                  "percent occurrences"
+title                   "Gaussian Distribution"
+
+line_coords             -3 2 3 12 
+line_style              lr
+line_coords             -1.645 -1.645 0 2.790
+line_style              dr
+line_coords             1.645  1.645 0 2.790
+line_style              dr
+
+legend_string           "data"
+legend_string           "100*binwidth*p(x)"
+legend_coords_rel       0.95 0.95
+legend_anchor           "northeast"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18
+

@@ -1,0 +1,38 @@
+# The command to run gsegraf from the directory where program files are
+# extracted is:
+#    ./src/gsegraf ./help_files/sinc3d_param.txt
+# If running gsegraf from another directory, then the argument for the keyword,
+# file_name, must be changed appropriately.
+
+file_name               "./sinc3d.txt"
+plot_type               "mesh"
+plot_style              "auto" 0xC0
+
+axis_type               "3d"
+#axis_limits             -20 20 -0.4 1 0 100
+
+view3d                  30 30
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+zlabel                  "z axis"
+title                   "z = sin(r)/r"
+
+text_string             "r = sqrt(x\xC2\xB2 + y\xC2\xB2)"
+text_coords_rel         1.10 0.50
+text_anchor             "west"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18
+
+# License:
+#    This document is released into the public domain.
+

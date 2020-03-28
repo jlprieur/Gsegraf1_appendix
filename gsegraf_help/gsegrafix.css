@@ -1,0 +1,110 @@
+/* Body specifications */
+body { color: #000000;
+       background-color: #F0F0F0;
+       padding: 5%;
+       margin: 0%;
+       font-family: serif;
+       font-size: 100%; }
+
+/* Heading specifications */
+h1 { font-size: 200%; text-align: center; }
+h2 { font-size: 150%; }
+h3 { font-size: 125%; }
+h4 { font-size: 112%; }
+h5 { font-size: 100%; }
+h6 { font-size: 100%; }
+
+/* Copyright-line specifications */
+#copyright { text-align: center; font-size: 100%; }
+
+/* Contents list specifications */
+ul { list-style-type: none;
+     list-style-position: outside;
+     font-weight: bold;
+     font-size: 100%;
+     width: 500px;
+     padding-left: 0px; }
+
+ul ul { list-style-type: none;
+        list-style-position: outside;
+        font-weight: normal;
+        font-size: 100%;
+        width: 500px;
+        padding-left: 20px; }
+
+/* Preformatted-text font specifications */
+pre { font-family: monospace; font-size: 100%; }
+
+/* Color names used by GSEGrafix (same as used by web browsers) */
+span.black       { color: #FFFFFF; background: #000000; }
+span.gray        { color: #FFFFFF; background: #808080; }
+span.silver      { color: #FFFFFF; background: #C0C0C0; }
+span.white       { color: #000000; background: #FFFFFF; }
+span.red         { color: #FFFFFF; background: #FF0000; }
+span.yellow      { color: #FFFFFF; background: #FFFF00; }
+span.lime        { color: #FFFFFF; background: #00FF00; }
+span.aqua        { color: #FFFFFF; background: #00FFFF; }
+span.blue        { color: #FFFFFF; background: #0000FF; }
+span.fuchsia     { color: #FFFFFF; background: #FF00FF; }
+span.maroon      { color: #FFFFFF; background: #800000; }
+span.olive       { color: #FFFFFF; background: #808000; }
+span.green       { color: #FFFFFF; background: #008000; }
+span.teal        { color: #FFFFFF; background: #008080; }
+span.navy        { color: #FFFFFF; background: #000080; }
+span.purple      { color: #FFFFFF; background: #800080; }
+
+/* Colors with maximum saturation and both maximum and half-maximum brightness
+   which span the spectrum of hues and are not contained in the table above */
+span.orange      { color: #FFFFFF; background: #FF8000; }
+span.chartreuse  { color: #FFFFFF; background: #80FF00; }
+span.springgreen { color: #FFFFFF; background: #00FF80; }
+span.slateblue   { color: #FFFFFF; background: #0080FF; }
+span.violet      { color: #FFFFFF; background: #8000FF; }
+span.pink        { color: #FFFFFF; background: #FF0080; }
+span.brown       { color: #FFFFFF; background: #804000; }
+span.x408000     { color: #FFFFFF; background: #408000; }
+span.x008040     { color: #FFFFFF; background: #008040; }
+span.x004080     { color: #FFFFFF; background: #004080; }
+span.x400080     { color: #FFFFFF; background: #400080; }
+span.x800040     { color: #FFFFFF; background: #800040; }
+
+/* Additional colors with varying hue, brightness, and saturation */
+span.firebrick   { color: #FFFFFF; background: #B22222; }
+span.salmon      { color: #FFFFFF; background: #FA8072; }
+span.coral       { color: #FFFFFF; background: #FF7F50; }
+span.copper      { color: #FFFFFF; background: #D0723E; }
+span.tan         { color: #FFFFFF; background: #D2B48C; }
+span.khaki       { color: #FFFFFF; background: #F0E68C; }
+span.gold        { color: #FFFFFF; background: #FFD700; }
+span.forestgreen { color: #FFFFFF; background: #228B22; }
+span.seagreen    { color: #FFFFFF; background: #2E8B57; }
+span.aquamarine  { color: #FFFFFF; background: #7FFFD4; }
+span.turquoise   { color: #FFFFFF; background: #40E0D0; }
+span.royalblue   { color: #FFFFFF; background: #4169E1; }
+
+/* Superscript and subscript specifications */
+span.sup { vertical-align: super; font-size: 90%; }
+span.sub { vertical-align: sub; font-size: 90%; }
+
+/* Table specifications */
+table { table-layout: auto;
+        margin: auto;
+        border-collapse: collapse;
+        border: 1px solid #000000;
+        font-family: sans;
+        font-size: 100%;
+        text-align: center; }
+th { border: 1px solid #000000; padding: 5px; }
+td { border: 1px solid #000000; padding: 5px; }
+/*
+caption { font-family: serif;
+          font-size: 112%;
+          margin: auto;
+          line-height: 200%; }
+*/
+
+/* Image specifications */
+.text_captions { font-size: 112%; padding-top: 5px; padding-bottom: 5px; text-align: center; }
+.image_alignment { padding-top: 5px; padding-bottom: 5px; text-align: center; }
+.image_examples { border: 1px solid #000000; width: 768; height: 551; }
+

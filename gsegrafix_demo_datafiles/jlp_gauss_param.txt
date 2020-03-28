@@ -1,0 +1,51 @@
+file_name               "jlp_gauss_data.txt"
+file_format             "%lf"
+plot_type               "histogram"
+plot_style              Bk
+
+file_name               "jlp_gauss_theory.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              lr
+
+axis_type               "linear"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "percent occurrences"
+title                   "Gaussian Distribution"
+
+line_coords             -1.645 -1.645 0 2.790
+line_style              dr
+line_coords             1.645  1.645 0 2.790
+line_style              dr
+
+legend_string           "data"
+legend_string           "100*binwidth*p(x)"
+legend_coords_rel       0.95 0.95
+legend_anchor           "northeast"
+
+text_string             "probability distribution"
+text_string             "p(x) = [1/{sqrt(2\xCF\x80)*a}]*exp(-t\xC2\xB2)"
+text_string             "t = (x - b)/{sqrt(2)*a}"
+text_string             "a = standard deviation"
+text_string             "b = mean"
+text_string             ""
+text_string             "mean = 0"
+text_string             "standard deviation = 1"
+text_string             "1000 samples"
+text_string             ""
+text_string             "90% of samples contained"
+text_string             "between dashed lines at"
+text_string             "x = \xC2\xB1 1.645"
+text_coords_rel         0.05 0.95
+text_anchor             "northwest"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18
+

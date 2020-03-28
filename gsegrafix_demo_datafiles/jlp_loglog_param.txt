@@ -1,0 +1,21 @@
+file_name               "jlp_loglog.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              lk
+
+axis_type               "loglog"
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+title                   "y = 1.001 + sin(x)"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

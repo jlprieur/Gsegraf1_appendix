@@ -1,0 +1,106 @@
+##############################################################
+# Makefile for gsegraf.exe and gsegrafix.exe 
+# Linux only
+#
+# JLP
+# Version: 14-10-2016
+#############################################################
+
+JLP_SYSTEM=unix
+
+include $(JLPSRC)/jlp_make.mk
+
+mylib=$(JLPLIB)/jlp
+
+LOCAL_FLAGS=-I. -I$(JLPSRC)/jlplib/jlp_fits -I$(JLPSRC)/jlplib/jlp_splot \
+	-I$(JLPSRC)/jlplib/jlp_numeric \
+	-I$(JLPSRC)/jlplib/jlp_gsegraf -I$(JLPSRC)/jlplib/jlp_gseg_gnome \
+	-Dunix -DSYSTEM_FIVE -DJLP_USE_WXWID
+
+# C++ flags to use with wxWidgets code 
+CPP_WXFLAGS := `wx-config --cppflags`
+WX_LIB := `wx-config --libs base,core`
+
+FITSLIB=$(mylib)/jlp_fits.a $(mylib)/libcfitsio.a
+JLP_GSEG_LIB = $(mylib)/jlp_gsegraf.a $(FITSLIB) 
+JLP_GNOME_LIB = $(mylib)/jlp_gseg_gnome.a
+
+CPP = g++
+CC = gcc
+
+################################################################################
+################################################################################
+CFLAGS = -g 
+#COMPILE = $(CC) $(DEFS) -I. $(INCLUDES) $(AM_CPPFLAGS) \
+#	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+#LINK = $(CC) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+COMPILE = $(CC) -I. $(AM_CFLAGS) $(CFLAGS)
+GNOME_CFLAGS = -DORBIT2=1 -pthread -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib64/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/dbus-1.0 -I/usr/lib64/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12  
+
+GNOME_LIBS = -pthread -lgnomeui-2 -lSM -lICE -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgconf-2 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0  
+
+LIBS = 
+# PREFIX, DATADIR, SYSCONFDIR are needed by GSEGrafix.cpp
+prefix = /usr
+AM_CFLAGS = \
+   `pkg-config --cflags libgnomeui-2.0` \
+   `pkg-config --cflags libgnomeprintui-2.2` \
+   -DPREFIX=\""$(prefix)"\" \
+   -DDATADIR=\""$(prefix)/share"\" \
+   -DSYSCONFDIR=\""$(prefix)/etc"\" \
+   -DLIBDIR=\""$(prefix)/lib"\"
+
+AM_LDFLAGS = \
+   `pkg-config --libs libgnomeui-2.0` \
+   `pkg-config --libs libgnomeprintui-2.2`
+
+
+gsegrafix_SRC = \
+   HelpMenu.cpp Dialogs.cpp
+gsegrafix_DEPS = gsegrafix.h
+gsegrafix_OBJ=$(gsegrafix_SRC:.cpp=.o)
+
+gsegraf_SRC = \
+   CreateMenuBar.cpp Dialogs.cpp \
+   EditMenu.cpp EventHandler.cpp \
+   FileMenu.cpp HelpMenu.cpp ViewMenu.cpp
+
+gsegraf_DEPS = gsegraf.h gsegraf_prototypes.h
+gsegraf_OBJ=$(gsegraf_SRC:.cpp=.o)
+
+.SUFFIXES:
+.SUFFIXES: .cpp .c .o $(SUFFIXES)
+
+DEPDIR =.deps
+
+.c.o:
+	$(CC) -c $(AM_CFLAGS) $(CFLAGS) $(LOCAL_FLAGS) $*.c 
+########
+#	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Po -c -o $@ $<
+########
+#	source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(COMPILE) -c $<
+########
+
+# For all cpp files: 
+.cpp.o:
+	$(CPP) -c  $(AM_CFLAGS) $(CFLAGS) $(LOCAL_FLAGS) $(CPP_WXFLAGS) $*.cpp
+
+all : GSEGrafix.o GSEGraf.o gsegrafix.exe gsegraf.exe $(gsegraf_OBJ)
+
+gsegraf.exe : GSEGraf.o GSEGraf.cpp $(gsegraf_OBJ) gsegraf.h
+	$(CPP) $(AM_CFLAGS) $(CFLAGS) $(LOCAL_FLAGS) -o $(EXEC)/gsegraf.exe \
+	GSEGraf.o \
+	$(gsegraf_OBJ) \
+	$(JLP_GSEG_LIB) $(JLP_GNOME_LIB) $(AM_LDFLAGS)
+
+gsegrafix.exe : GSEGrafix.o GSEGrafix.cpp $(gsegraf_OBJ) gsegrafix.h gsegraf.h
+	$(CPP) $(AM_CFLAGS) $(CFLAGS) $(LOCAL_FLAGS) -o $(EXEC)/gsegrafix.exe \
+	GSEGrafix.o \
+	$(gsegrafix_OBJ) \
+	$(JLP_GSEG_LIB) $(JLP_GNOME_LIB) $(AM_LDFLAGS)
+
+clean: 
+clear:
+	rm -f GSEGraf.o GSEGrafix.o $(gsegrafix_OBJ) $(gsegraf_OBJ)   

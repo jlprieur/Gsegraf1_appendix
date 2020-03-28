@@ -1,0 +1,36 @@
+file_name               "./jlp_logz.txt"
+plot_type               "color"
+plot_style              "bilinear"
+
+file_name               "./jlp_logz.txt"
+plot_type               "contour"
+
+# plot_style with one color k=black r=red b=blue y=yellow p=purple
+# k2 for width=2, etc
+plot_style              k
+
+# plot_style with a few colors:
+#plot_style              "auto"2
+# add the width to encrease the line width 
+#plot_style              "auto"4 
+
+axis_type               "linear"
+
+axis_limits             -3 3 -2.25 2.25 -3.5 14 
+
+contours                9
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+title                   "Magnitude of Complex Function log(z)"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

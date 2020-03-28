@@ -1,0 +1,29 @@
+#    runs gsegraf ./jlp_sinc3d_param.txt
+
+file_name               "jlp_sinc3d.txt"
+plot_type               "mesh"
+plot_style              "auto" 0xC0
+
+axis_type               "3d"
+
+view3d                  30 30
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+zlabel                  "z axis"
+title                   "z = sin(r)/r"
+
+text_string             "r = sqrt(x\xC2\xB2 + y\xC2\xB2)"
+text_coords_rel         1.10 0.50
+text_anchor             "west"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

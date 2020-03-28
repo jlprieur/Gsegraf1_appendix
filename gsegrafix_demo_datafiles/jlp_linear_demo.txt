@@ -1,0 +1,38 @@
+file_name               "demo1_data.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              lk
+
+file_name               "demo1_data.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              Ck
+
+file_name               "demo2_data.txt"
+file_format             "%lf %lf"
+plot_type               "points"
+plot_style              Cr
+
+axis_type               "linear"
+
+minor_ticks             "on"
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+title                   "demo_data.txt"
+
+legend_string           "data1"
+legend_string           "data1"
+legend_string           "data2"
+legend_coords_rel       0.05 0.95
+legend_anchor           "northwest"
+
+date_time               "southeast"
+font_size_date_time     8
+font_size_legend        8
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18

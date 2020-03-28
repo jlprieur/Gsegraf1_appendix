@@ -1,0 +1,33 @@
+file_name               "jlp_loghelix.txt"
+file_format             "%lf %lf %lf"
+plot_type               "points"
+plot_style              lr
+
+axis_type               "3d"
+
+axis_limits             -25 25 -25 25 * *
+
+view3d                  30 30
+
+grid                    ls
+
+xlabel                  "x axis"
+ylabel                  "y axis"
+zlabel                  "z axis"
+title                   "Logarithmic Helix"
+
+text_string             "theta = 20*pi*(0:0.001:1)"
+text_string             "r = exp(0.05*theta)"
+text_string             "x = r*cos(theta)"
+text_string             "y = r*sin(theta)"
+text_string             "z = theta"
+text_coords_rel         1.10 0.50
+text_anchor             "west"
+
+font_size_date_time     12
+font_size_legend        12
+font_size_text          12
+font_size_tick_labels   14
+font_size_axis_labels   16
+font_size_title         18
+

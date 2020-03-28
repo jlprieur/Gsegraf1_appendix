@@ -1,0 +1,2 @@
+LoadDbleImage1ToGsegPlot/gseg_plot_type0=4 axis_type0=linear
+LoadDbleImage1ToGsegPlot/nx_1=256 ny_1=256

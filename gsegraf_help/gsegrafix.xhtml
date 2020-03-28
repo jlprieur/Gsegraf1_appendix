@@ -1,0 +1,2438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>GSEGrafix Help</title>
+<link rel="stylesheet" type="text/css" href="./gsegrafix.css" />
+</head>
+
+<body>
+
+<img src="./figures/gsegrafix-logo.png" alt="gsegrafix-logo.png" width="175" height="175" />
+
+<h1>GSEGrafix Plotting Program</h1>
+
+<div id="copyright">
+<p>
+Copyright &copy; 2008, 2009, 2010, 2011 Spencer A. Buckner
+</p>
+</div>
+
+<h2 id="Contents">Contents</h2>
+<ul>
+  <li><a href="#Licenses">Licenses</a>
+    <ul>
+      <li><a href="#Document_license">Document license</a></li>
+      <li><a href="#Program_license">Program license</a></li>
+    </ul>
+  </li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Introduction">Introduction</a></li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Parameter_file">Parameter file</a>
+    <ul>
+      <li><a href="#file_name"><code>file_name</code></a></li>
+      <li><a href="#file_format"><code>file_format</code></a></li>
+      <li><a href="#plot_type"><code>plot_type</code></a></li>
+      <li><a href="#plot_style"><code>plot_style</code></a>
+        <ul>
+          <li><a href="#2d_points_plot_type">2d points plot type</a></li>
+          <li><a href="#2d_histogram_plot_type">2d histogram plot type</a></li>
+          <li><a href="#2d_contour_plot_type">2d contour plot type</a></li>
+          <li><a href="#2d_color_plot_type">2d color plot type</a></li>
+          <li><a href="#3d_points_plot_type">3d points plot type</a></li>
+          <li><a href="#3d_contour_plot_type">3d contour plot type</a></li>
+          <li><a href="#3d_color_plot_type">3d color plot type</a></li>
+          <li><a href="#3d_mesh_plot_type">3d mesh plot type</a></li>
+        </ul>
+      </li>
+      <li><a href="#axis_type"><code>axis_type</code></a></li>
+      <li><a href="#axis_scale"><code>axis_scale</code></a></li>
+      <li><a href="#axis_limits"><code>axis_limits</code></a></li>
+      <li><a href="#view3d"><code>view3d</code></a></li>
+      <li><a href="#minor_ticks"><code>minor_ticks</code></a></li>
+      <li><a href="#grid"><code>grid</code></a></li>
+      <li><a href="#axis_labels"><code>xlabel, ylabel, zlabel, title</code></a></li>
+      <li><a href="#bin_width"><code>bin_width</code></a></li>
+      <li><a href="#bin_value"><code>bin_value</code></a></li>
+      <li><a href="#bin_ref"><code>bin_ref</code></a></li>
+      <li><a href="#ninterp"><code>ninterp</code></a></li>
+      <li><a href="#contours"><code>contours</code></a></li>
+      <li><a href="#contour_color"><code>contour_color</code></a></li>
+      <li><a href="#mesh_color"><code>mesh_color</code></a></li>
+      <li><a href="#stems"><code>stems</code></a></li>
+      <li><a href="#rect_coords"><code>rect_coords</code></a></li>
+      <li><a href="#rect_style"><code>rect_style</code></a></li>
+      <li><a href="#ellipse_coords"><code>ellipse_coords</code></a></li>
+      <li><a href="#ellipse_style"><code>ellipse_style</code></a></li>
+      <li><a href="#line_coords"><code>line_coords</code></a></li>
+      <li><a href="#line_style"><code>line_style</code></a></li>
+      <li><a href="#symbol_coords"><code>symbol_coords</code></a></li>
+      <li><a href="#symbol_style"><code>symbol_style</code></a></li>
+      <li><a href="#legend_string"><code>legend_string</code></a></li>
+      <li><a href="#legend_coords_abs"><code>legend_coords_abs</code></a></li>
+      <li><a href="#legend_coords_rel"><code>legend_coords_rel</code></a></li>
+      <li><a href="#legend_anchor"><code>legend_anchor</code></a></li>
+      <li><a href="#text_string"><code>text_string</code></a></li>
+      <li><a href="#text_coords_abs"><code>text_coords_abs</code></a></li>
+      <li><a href="#text_coords_rel"><code>text_coords_rel</code></a></li>
+      <li><a href="#text_anchor"><code>text_anchor</code></a></li>
+      <li><a href="#image_filename"><code>image_filename</code></a></li>
+      <li><a href="#image_coords_abs"><code>image_coords_abs</code></a></li>
+      <li><a href="#image_coords_rel"><code>image_coords_rel</code></a></li>
+      <li><a href="#image_anchor"><code>image_anchor</code></a></li>
+      <li><a href="#date_time"><code>date_time</code></a></li>
+      <li><a href="#save"><code>save</code></a></li>
+      <li><a href="#save_close"><code>save_close</code></a></li>
+      <li><a href="#background_color"><code>background_color</code></a></li>
+      <li><a href="#background_image"><code>background_image</code></a></li>
+      <li><a href="#window_size"><code>window_size</code></a></li>
+      <li><a href="#plot_box"><code>plot_box</code></a></li>
+      <li><a href="#tick_marks"><code>x_tick_marks, y_tick_marks, z_tick_marks</code></a></li>
+      <li><a href="#tick_labels"><code>x_tick_labels, y_tick_labels, z_tick_labels</code></a></li>
+      <li><a href="#font_name"><code>font_name</code></a></li>
+      <li><a href="#font_sizes"><code>font_size_date_time, font_size_legend, font_size_text,<br />font_size_tick_labels, font_size_axis_labels, font_size_title</code></a></li>
+    </ul>
+  </li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Keyword_summary">Keyword summary</a></li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Data_files">Data files</a>
+    <ul>
+      <li><a href="#2d_points_plots">2d points plots</a></li>
+        <ul>
+          <li><a href="#Rectangular_coordinates">Rectangular coordinates</a></li>
+          <li><a href="#Polar_coordinates">Polar coordinates</a></li>
+        </ul>
+      <li><a href="#Histograms">Histograms</a></li>
+      <li><a href="#3d_points_plots">3d points plots</a></li>
+      <li><a href="#Contour_color_mesh_plots">Contour, color, and mesh plots</a></li>
+    </ul>
+  </li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Operation">Operation</a>
+    <ul>
+      <li><a href="#Running_GSEGrafix_from_terminal_window">Running GSEGrafix from terminal window</a></li>
+      <li><a href="#Running_GSEGrafix_from_Octave_program">Running GSEGrafix from Octave program</a></li>
+      <li><a href="#Running_GSEGrafix_from_C_program">Running_GSEGrafix_from_C_program</a></li>
+      <li><a href="#Zoom_capability">Zoom capability</a></li>
+      <li><a href="#Save_As_menu_button">Save As menu button</a></li>
+      <li><a href="#Axis_Limits_menu_button">Axis Limits menu button</a></li>
+      <li><a href="#Rotate_3d_Axes_menu_button">Rotate 3d Axes menu button</a></li>
+      <li><a href="#Label_Contours_menu_button">Label Contours menu button</a></li>
+      <li><a href="#Display_Coordinates_menu_button">Display Coordinates menu button</a></li>
+      <li><a href="#UTF-8_escape_sequences">UTF-8 escape sequences</a></li>
+        <ul>
+          <li><a href="#Greek_letters">Greek letters</a></li>
+          <li><a href="#Mathematical_symbols">Mathematical symbols</a></li>
+        </ul>
+    </ul>
+  </li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Color_specification">Color specification</a></li>
+  <li>&nbsp;</li>
+
+  <li><a href="#Examples">Examples</a>
+    <ul>
+      <li><a href="#Example_1">Example 1.  Two-dimensional linear plot: y = sin(x)/x</a></li>
+      <li><a href="#Example_2">Example 2.  Two-dimensional linear plot: orbit</a></li>
+      <li><a href="#Example_3">Example 3.  Two-dimensional loglog plot: y = 1.001 + sin(x)</a></li>
+      <li><a href="#Example_4">Example 4.  Histogram: gaussian (normal) distribution</a></li>
+      <li><a href="#Example_5">Example 5.  Polar plot: gain of half-wavelength dipole antenna</a></li>
+      <li><a href="#Example_6">Example 6.  Three-dimensional points plot: logarithmic helix</a></li>
+      <li><a href="#Example_7">Example 7.  Three-dimensional mesh plot: z = sin(r)/r</a></li>
+      <li><a href="#Example_8">Example 8.  Three-dimensional contour plot: magnitude of log(z)</a></li>
+      <li><a href="#Example_9">Example 9.  Two-dimensional contour plot: magnitude of log(z)</a></li>
+      <li><a href="#Example_10">Example 10. Two-dimensional color plot: magnitude of log(z)</a></li>
+      <li><a href="#Example_11">Example 11. Two-dimensional color plot: Mandelbrot set</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="Licenses">Licenses</h2>
+<h3 id="Document_license">Document license</h3>
+<p>
+Permission is granted to copy, distribute, and/or modify this document under the terms of the <a href="./COPYING-DOCS">GNU Free Documentation License, Version 1.3</a>, or any later version published by the <a href="http://www.fsf.org/">Free Software Foundation</a>, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+</p>
+<h3 id="Program_license">Program license</h3>
+<p>
+Use, copying, modification, and distribution of the GSEGrafix plotting program are subject to the terms of the <a href="./COPYING">GNU General Public License, Version 3</a>, or any later version published by the <a href="http://www.fsf.org/">Free Software Foundation</a>.
+</p>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Introduction">Introduction</h2>
+<p>
+GSEGrafix is a <a href="http://www.gnome.org/">GNOME</a> application which uses an anti-aliased GNOME canvas for creating scientific and engineering plots. The program is written in C and reads ASCII <a href="#Parameter_file">parameter files</a> and <a href="#Data_files">data files</a>. The parameter files contain keywords and corresponding arguments for specifying plot parameters (such as data <a href="#file_name">file names</a>, data <a href="#file_format">file formats</a>, <a href="#plot_type">plot type</a>, <a href="#plot_style">plot style</a>, <a href="#axis_type">axis type</a>, <a href="#axis_labels">axis labels</a>, etc). <a href="#Operation">Operation</a> of the program is described in more detail below. Eleven <a href="#Examples">example</a> plots, corresponding examples of <a href="http://www.octave.org/">Octave</a> code or C code for creating the data files, and corresponding parameter files are included at the end of this document. Separate data files and parameter files are provided for Examples <a href="#Example_1">1</a> and <a href="#Example_7">7</a>. These files can be copied and used to run the program. Links to these files are included in the descriptions of these two examples.
+</p>
+<p>
+GSEGrafix can make rectangular two-dimensional plots (with linear, semi-log, or log-log axes), histograms, polar-axis plots, and three-dimensional plots (with linear axes). Three-dimensional plots include points, contour, color, and mesh plots. Data for three-dimensional plots can also be used to create two-dimensional plots using contour lines or color to represent values of a third variable.
+</p>
+<p>
+A menu bar at the top of the plot window allows users to save the plot to a file, send the plot to a printer, copy the plot to the GNU/Linux clipboard, change the axis limits of the plot, change the orientation of three-dimensional plots, and display mouse coordinates in the lower left corner of the plot window for two-dimensional plots. Supported file formats for saving the plot to a file are bmp (Windows Bitmap), jpeg (Joint Photographic Experts Group), and png (Portable Network Graphics).
+</p>
+<p>
+All plots include options to add <a href="#minor_ticks">minor tick marks</a>, <a href="#grid">grid</a>, <a href="#legend_string">legend</a>, <a href="#text_string">text</a>, and <a href="#date_time">date-time</a> string to the plot. Additional <a href="#image_filename">images</a> can be added to a plot by specifying image file names and desired locations on the plot. Rectangular two-dimensional plots include a <a href="#Zoom_capability">zoom capability</a> using the mouse to specify a rectangle on the plot to expand. Hidden lines are removed from three-dimensional mesh and contour plots unless specified otherwise. The program calculates "nice" tick-mark labels for all plots.
+</p>
+<p>
+The program has two executables, gsegrafix and gsegraf. The gsegrafix executable creates a window which can be used to choose a parameter file. This window is shown below:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/gsegrafix.png" alt="gsegrafix.png" width="406" height="357" />
+</div>
+
+<p>
+When the gsegrafix executable is run and a parameter file has been chosen, the gsegraf executable is called to create the plot window. An example plot window is shown below:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/window.png" alt="window.png" width="774" height="602" />
+</div>
+
+<p>
+The program can also be run by using either the gsegrafix or gsegraf command followed by the name of a parameter file:
+</p>
+<pre>     $ gsegrafix /home/sab/gsegrafix/param_files/bessel_param.txt &amp;</pre>
+<p>or:</p>
+<pre>     $ gsegraf /home/sab/gsegrafix/param_files/bessel_param.txt &amp;</pre>
+<p>
+This help file can be displayed by using either the gsegrafix or gsegraf command followed by <code>-h</code>:
+</p>
+<pre>     $ gsegrafix -h</pre>
+<p>or:</p>
+<pre>     $ gsegraf -h</pre>
+<p>
+If the program's path is not included in the PATH environment variable, the path must be included in the commands listed above. However, if gsegrafix is used to choose the parameter file, then the program's path must be included in the PATH environment variable so that gsegraf will be found when gsegrafix calls it.
+</p>
+<p>
+The program can also be installed on the desktop Panel. To add GSEGrafix to the Panel right-click in an unused area of the Panel and select <b>Add to Panel &#8594; Custom Application Launcher</b>. This will bring up a dialog box where the name of the application, the path (if needed) and name of the command that starts the application, and a comment describing the application can be entered. By clicking the Icon box a browser dialog box will appear where one can choose an appropriate icon. By default the installation process writes the GSEGrafix logo file, gsegrafix-logo.png, to /usr/local/share/pixmaps if the program is compiled and installed by the user. The logo file is written to /usr/share/pixmaps if the program is installed from an rpm file. Appropriate entries for the dialog box are:
+</p>
+<pre>        Type: Application
+        Name: GSEGrafix
+     Command: gsegrafix %f
+     Comment: Scientific and engineering plotting program
+        Icon: /usr/local/share/pixmaps/gsegrafix-logo.png
+</pre>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Parameter_file">Parameter file</h2>
+<p>
+The parameter file contains keywords, which must begin in column 1, followed by appropriate parameters. If the parameter is a string, it must be enclosed in double quotation marks, "string". Parameters which are single characters or numbers are not enclosed in quotation marks. If a keyword does not begin in column 1, that line is ignored when the parameter file is read. Comments can be inserted in a parameter file if they are preceded by a hash character, #. The # character and comment can appear anywhere after the parameters in a line containing a keyword and corresponding parameters:
+</p>
+<pre>     keyword   parameters   # comment</pre>
+<p>
+A comment can also appear on a separate line of its own. If it is desired to insert a # character in a parameter string (for keywords <code>xlabel</code>, <code>ylabel</code>, <code>title</code>, etc), the # character must be preceded by a backslash, \, to distinguish it from a comment:
+</p>
+<pre>     title   "Plot \#1"   # comment</pre>
+<p>
+This line will result in a plot title of Plot #1. If a string of at least five # characters (#####) is inserted in the parameter file, beginning in column 1, then all following lines are ignored. Notes or other information can be added after this line and will not affect program execution. Multiline parameter strings can be created by inserting \n, the newline escape sequence in C, where a line break is desired. The possible keywords are:
+</p>
+<pre>     file_name
+     file_format
+     plot_type
+     plot_style
+     axis_type
+     axis_scale
+     axis_limits
+     view3d
+     minor_ticks
+     grid
+     xlabel
+     ylabel
+     zlabel
+     title
+     bin_width
+     bin_value
+     bin_ref
+     ninterp
+     contours
+     contour_color
+     mesh_color
+     stems
+     rect_coords
+     rect_style
+     ellipse_coords
+     ellipse_style
+     line_coords
+     line_style
+     symbol_coords
+     symbol_style
+     legend_string
+     legend_coords_abs
+     legend_coords_rel
+     legend_anchor
+     text_string
+     text_coords_abs
+     text_coords_rel
+     text_anchor
+     image_filename
+     image_coords_abs
+     image_coords_rel
+     image_anchor
+     date_time
+     save
+     save_close
+     background_color
+     background_image
+     window_size
+     plot_box
+     x_tick_marks
+     y_tick_marks
+     z_tick_marks
+     x_tick_labels
+     y_tick_labels
+     z_tick_labels
+     font_name
+     font_size_date_time
+     font_size_legend
+     font_size_text
+     font_size_tick_labels
+     font_size_axis_labels
+     font_size_title
+</pre>
+<p>
+Each of these keywords and the parameters which follow it are described below. A list of keywords with example parameters is in the <a href="#Keyword_summary">Keyword summary</a> section.
+</p>
+
+<h3 id="file_name"><code>file_name</code></h3>
+<p>
+The keyword, <code>file_name</code>, specifies the name (and path) of a data file. The maximum number of data files and the maximum number of data points in each file are not limited by the program.
+</p>
+
+<h3 id="file_format"><code>file_format</code></h3>
+<p>
+The keyword, <code>file_format</code>, specifies the format of the data contained in the data file using the conventions of the C programming language (see Brian W. Kernighan and Dennis M. Ritchie, <i>The C Programming Language</i>, Second Edition, Section B1.3 Formatted Input, pages 245 - 246). Since all numbers read from data files are stored as double-precision numbers, a double-precision format must be used. The format <code>%lf</code> may be used exclusively since it covers numbers with optional sign, optional decimal point, and optional exponent. Inserting an asterisk (*) between the percent sign (%) and lf, as in <code>%*lf</code>, will cause that column of numbers to be ignored. The <code>file_format</code> for each data file must be specified for <code>"points"</code> and <code>"histogram"</code> plot types but not for <code>"mesh"</code>, <code>"contour"</code>, and <code>"color"</code> plot types.
+</p>
+
+<h3 id="plot_type"><code>plot_type</code></h3>
+<p>
+The keyword, <code>plot_type</code>, specifies the type of plot to be drawn. The possible parameters are:
+</p>
+<pre>     "points"        (linear, semilogx, semilogy, loglog, polar, and 3d axis types)
+     "histogram"     (linear axis type only)
+     "contour"       (linear and 3d axis types)
+     "color"         (linear and 3d axis types)
+     "mesh"          (3d axis type only)
+</pre>
+<p>
+The <code>"points"</code> plot type refers to plots where the corresponding data file has columns of x and y, theta and r, or x, y, and z coordinates to be plotted. This plot type is supported for all axes (see the <a href="#axis_type">axis_type</a> keyword below).
+</p>
+<p>
+The <code>"histogram"</code> plot type refers to plots where the corresponding data file has a column of numbers whose histogram is to be calculated. This plot type is supported for only the linear axes.
+</p>
+<p>
+The <code>"color"</code> plot type refers to plots where z-axis data is interpolated over the entire area of the plot and converted to corresponding colors. This plot type is supported for 2d linear and 3d axes. For 2d linear axes a color axis is drawn to the right of the plot showing the relationship between plotted colors and z-axis values.
+</p>
+<p>
+The <code>"contour"</code> plot type is supported for both 2d linear and 3d axes. In the case of 2d contour plots z-axis data is represented in either of two ways. One method uses contour lines of a single color and contour-line labels to specify the z-axis values. The labeling function is activated by clicking the View menu button and then the Label Contours button. The mouse cursor changes to a cross hair when this button is clicked the first time. As the mouse is moved interpolated values of the z coordinate at the mouse position are drawn in the upper left corner of the plot window. The contour plot corresponding to the z-axis values is indicated above the z-axis values as shown below.
+</p>
+<pre>     plot 1
+     z = 1.23456
+</pre>
+<p>
+If there is more than one contour plot, the up-arrow key can be clicked to change to the next contour plot. Clicking the down-arrow key changes to an earlier plot. When the cursor is positioned on or near a contour line and the left mouse button is pressed, the contour value of the nearest contour line is drawn at the mouse position. The font size of contour labels is the same as that for text. To leave this mode and return the mouse cursor to its default shape, click the Label Contours button a second time. The second method of drawing 2d contour plots uses contour lines of various colors, where the color of the contour line specifies the z-axis value. A color axis is drawn to the right of the plot showing the relationship between plotted colors and z-axis values.
+</p>
+<p>
+The <code>"mesh"</code> plot type is supported for 3d axes. The data formats for <code>"color"</code>, <code>"contour"</code>, and <code>"mesh"</code> plots are the same and are described in the section on <a href="#Three-dimensional_contour_color_mesh_plots">data files</a>.
+</p>
+
+<h3 id="plot_style"><code>plot_style</code></h3>
+<p>
+The keyword, <code>plot_style</code>, specifies how the plot is to be drawn and has one, two, or three parameters. The following sections will describe <code>plot_style</code> parameters for each plot type.
+</p>
+
+<h4 id="2d_points_plot_type">2d points plot type</h4>
+<p>
+For <code>"points"</code> plot types the first <code>plot_style</code> parameter is a character specifying the line or symbol used for plotting and is one of the following:
+</p>
+<pre>     character     line/symbol
+
+         l         solid line
+         d         dashed line
+         .         dotted line
+         c         circle, unfilled
+         C         circle, filled
+         t         triangle, unfilled
+         T         triangle, filled
+         s         square, unfilled
+         S         square, filled
+         i         diamond, unfilled
+         I         diamond, filled
+         p         pentagon, unfilled
+         P         pentagon, filled
+         h         hexagon, unfilled
+         H         hexagon, filled
+         +         plus sign
+         x         multiplication sign
+         r         star, 5 points
+         a         asterisk, 6 points
+</pre>
+<p>
+The second parameter is a character or hexadecimal number specifying line or symbol color. Following is a list of the color characters used by GSEGrafix, the corresponding color names used by web browsers, and the hexadecimal rgb (red, green, blue) color numbers:
+</p>
+<pre>     character           color                    rgb number
+
+         k         <span class="black  ">     </span> black                      000000
+         a         <span class="gray   ">     </span> gray    (gray50)           808080
+         s         <span class="silver ">     </span> silver  (gray75)           C0C0C0
+         w         <span class="white  ">     </span> white                      FFFFFF
+         r         <span class="red    ">     </span> red                        FF0000
+         y         <span class="yellow ">     </span> yellow                     FFFF00
+         l         <span class="lime   ">     </span> lime    (green)            00FF00
+         q         <span class="aqua   ">     </span> aqua    (cyan)             00FFFF
+         b         <span class="blue   ">     </span> blue                       0000FF
+         f         <span class="fuchsia">     </span> fuchsia (magenta)          FF00FF
+         m         <span class="maroon ">     </span> maroon  (dark red)         800000
+         o         <span class="olive  ">     </span> olive   (dark yellow)      808000
+         g         <span class="green  ">     </span> green   (dark green)       008000
+         t         <span class="teal   ">     </span> teal    (dark cyan)        008080
+         n         <span class="navy   ">     </span> navy    (dark blue)        000080
+         p         <span class="purple ">     </span> purple  (dark magenta)     800080
+</pre>
+<p>
+If it is desired to use a color other than one of those above, then a hexadecimal rgb number can be used. The rgb number must be preceded by 0x or 0X in the parameter file to distinguish it as a hexadecimal value, and an additional pair of hexadecimal digits must be added to specify the alpha value (opaqueness) of the color. The opaqueness of the color increases as the alpha value increases. If alpha = 0x00, the color is completely transparent (no color at all). If alpha = 0xFF, the color is opaque. For example, to specify translucent red an alpha value of 0xC0 might be used. The hexadecimal color number in the parameter file would then be 0xFF0000C0. All colors specified with a color character (kaswrylqbfmogtnp) are opaque (alpha = 0xFF). Further information on <a href="#Color_specification">color specification</a> is given below.
+</p>
+<p>
+An optional integer third parameter may be added to specify line width or symbol size. The default line width is 1, and the default symbol size is 6. Shown below are lines and symbols for line widths of 1, 3, and 5 and symbol sizes of 6, 8, and 10:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/symbols.png" alt="symbols.png" width="350" height="145" />
+</div>
+
+<p>
+See Examples <a href="#Example_1">1</a>, <a href="#Example_2">2</a>, <a href="#Example_3">3</a>, and <a href="#Example_5">5</a> below.
+</p>
+
+<h4 id="2d_histogram_plot_type">2d histogram plot type</h4>
+<p>
+For <code>"histogram"</code> plot types the first <code>plot_style</code> parameter specifies whether lines or bars are used for plotting and is one of the following:
+</p>
+<pre>     l (solid line)
+     b (bar, unfilled)
+     B (bar, filled)
+</pre>
+<p>
+The second parameter is a character or hexadecimal number specifying line or bar color and is defined in the same ways as for line and symbol color above.
+</p>
+<p>
+An optional integer third parameter may be added to specify line width if lines, rather than bars, have been chosen for plotting. The default value is 1. See <a href="#Example_4">Example 4</a> below.
+</p>
+
+<h4 id="2d_contour_plot_type">2d contour plot type</h4>
+<p>
+For 2d <code>"contour"</code> plot types the first <code>plot_style</code> parameter is a character or hexadecimal number specifying contour-line color (for constant-color contour lines) or <code>"auto"</code> to specify varying contour-line colors. An optional second integer parameter can be used to specify contour line-width. The default value for line width is 1. See <a href="#Example_9">Example 9</a> below.
+</p>
+
+<h4 id="2d_color_plot_type">2d color plot type</h4>
+<p>
+For <code>"color"</code> plot types the first <code>plot_style</code> parameter must be either <code>"nearest"</code> or <code>"bilinear"</code> to specify how colors are to be calculated. The parameter, <code>"nearest"</code>, specifies nearest-neighbor interpolation to calculate pixel color. The parameter, <code>"bilinear"</code>, specifies bilinear interpolation to calculate pixel color.
+</p>
+<p>
+Optional second and third parameters can be added to specify z-axis values below or above which colors will be black or white, respectively. See Examples <a href="#Example_10">10</a> and <a href="#Example_11">11</a> below.
+</p>
+
+<h4 id="3d_points_plot_type">3d points plot type</h4>
+<p>
+The <code>plot_style</code> parameters for 3d points plot types are the same as for 2d points plot types. See <a href="#Example_6">Example 6</a> below.
+</p>
+
+<h4 id="3d_contour_plot_type">3d contour plot type</h4>
+<p>
+For 3d <code>contour</code> plot types two <code>plot_style</code> parameters are used to specify color information. The first parameter specifies the color of the upper surface of the plot, and the second parameter specifies the color of the lower surface. Any color character listed above may be specified for either of the fill colors, with the addition of x, which specifies that the color is transparent (alpha = 0x00). Hexadecimal color values may also be used for either or both parameters. The default contour-line color is black if the <a href="#background_color">background_color</a> is white (the default value) and is white if the background_color is black. Contour-line color may be changed by using the <a href="#contour_color"><code>contour_color</code></a> keyword described below. See <a href="#Example_8">Example 8</a> below.
+</p>
+
+<h4 id="3d_color_plot_type">3d color plot type</h4>
+<p>
+For 3d <code>"color"</code> plot types a single parameter, <code>"auto"</code>, specifies that the colors of the plotted surface are a function of z-axis values. The colors range from blue (for the minimum z-axis value) through cyan, green, yellow, and red (for the maximum z-axis value). An optional second parameter can be added to specify the alpha value of these colors. The alpha value must be specified as a two-digit hexadecimal number preceded by 0x or 0X, such as 0xC0. When alpha is less than 0xFF, it is possible to see the axes through the plotted surface, or perhaps a plotted line below the surface. However, hidden parts of the plotted surface cannot be seen regardless of the value of alpha; they are not drawn in 3d color plots as they are in 3d mesh plots (<a href="#Example_7">Example 7</a>). Only parts of the plotted surface that are not blocked by other parts of the surface are drawn and are visible. The default value for alpha is 0xFF (opaque).
+</p>
+<p>
+This plot type uses bilinear interpolation between x and y values, which specify the data grid, to calculate corresponding additional values of z. The default interpolation procedure divides each interval in x and y data into 20 additional intervals. An example is:
+</p>
+<pre>     original x values:               0 1 2 3 4 4.5 5.0 5.5 6 7 8 9 10
+     number of original x values:     nx = 13
+     interpolated x values:           0 0.05 0.10 ... 4 4.025 4.050 ... 6 6.05 6.10 ... 10
+     number of interpolated x values: nx_interp = 20*(nx - 1) + 1 = 241
+</pre>
+<p>
+Dividing each interval in the original x and y data into 20 additional intervals may not be enough to calculate z values for every pixel in the surface to be displayed. It may be adequate for relatively smooth surfaces. If there are areas where z changes rapidly, more interpolated values may be needed. Regions of the original x and y data with intervals smaller than the rest of the data will continue to have smaller intervals than the rest of the data after interpolation. The keyword, <a href="#ninterp"><code>ninterp</code></a> can be used to specify a higher (or lower) number of interpolated values.
+</p>
+
+<h4 id="3d_mesh_plot_type">3d mesh plot type</h4>
+<p>
+For 3d <code>"mesh"</code> plot types two <code>plot_style</code> parameters are used to specify color information as described above for 3d contour plot types, or a single parameter, <code>"auto"</code>, can be used to specify that the colors of both upper and lower surfaces are a function of z-axis values. The colors range from blue (for the minimum z-axis value) through cyan, green, yellow, and red (for the maximum z-axis value). The default mesh color is black if the <a href="#background_color">background_color</a> is white (the default value) and is white if the background_color is black. Mesh color may be changed by using the <a href="#mesh_color"><code>mesh_color</code></a> keyword described below.
+</p>
+<p>
+When the parameter, <code>"auto"</code>, is used, an optional second parameter can be added to specify the alpha value of these colors. The alpha value must be specified as a two-digit hexadecimal number preceded by 0x or 0X, such as 0xC0. The default value for alpha is 0xFF (opaque). See <a href="#Example_7">Example 7</a> below.
+</p>
+
+<h3 id="axis_type"><code>axis_type</code></h3>
+<p>
+The keyword, <code>axis_type</code>, specifies the type of axes to be drawn. The possible parameters are:
+</p>
+<pre>     "linear"       (points, histogram, contour, and color plot types)
+     "semilogx"     (points plot type only)
+     "semilogy"     (points plot type only)
+     "loglog"       (points plot type only)
+     "polar"        (points plot type only)
+     "3d"           (points, contour, color, and mesh plot types)
+</pre>
+
+<h3 id="axis_scale"><code>axis_scale</code></h3>
+<p>
+(Linear axes and points plot type only)
+</p>
+<p>
+The keyword, <code>axis_scale</code>, specifies the relationship between the plot axes and the data. The possible parameters are:
+</p>
+<pre>     "auto"
+     "equal"
+</pre>
+<p>
+The <code>"auto"</code> axis scale means that axis tick-mark values are chosen to be "nice" values with increments between tick marks equal to 1, 2, or 5 (times the appropriate power of 10) and tick-mark values equal to integer multiples of these increments. The <code>equal</code> axis scale means that axis tick-mark values are still "nice," but axis minimum and maximum values are chosen so that equal distances on each axis correspond to equal changes in coordinate values. The default parameter for <code>axis_scale</code> is <code>"auto"</code>. See <a href="#Example_2">Example 2</a> for use of the <code>equal</code> axis scale.
+</p>
+
+<h3 id="axis_limits"><code>axis_limits</code></h3>
+<p>
+The keyword, <code>axis_limits</code>, specifies minimum and maximum values of axes which override axis limits automatically calculated from the data. Four values must be specified for all plots displaying only x and y data (two-dimensional points plots, including polar plots and histograms). Six values must be specified for plots displaying x, y, and z data (two-dimensional contour and color plots and three-dimensional points, contour, and mesh plots). If fewer changes need to be specified, the missing values must be indicated with an asterisk (*). In polar plots theta (angle) coordinates are analogous to x coordinates in rectangular plots, and r (radial) coordinates are analogous to y coordinates in rectangular plots. Theta coordinates always vary from 0 to 360 degrees so that theta limits cannot be changed; only radial axis limits can be changed. When using the <code>axis_limits</code> keyword with polar plots, the radial axis limits must be specified the same way y-axis limits are specified for rectangular plots. The formats for <code>axis_limits</code> parameters are then:
+</p>
+<pre>     xmin xmax ymin ymax (rectangular plots displaying 2d data)</pre>
+<p>or:</p>
+<pre>     * * rmin rmax (polar plots)</pre>
+<p>or:</p>
+<pre>     xmin xmax ymin ymax zmin zmax (plots displaying 3d data)</pre>
+<p>
+See Examples <a href="#Example_2">2</a>, <a href="#Example_5">5</a>, <a href="#Example_8">8</a>, <a href="#Example_9">9</a>, and <a href="#Example_10">10</a> below.
+</p>
+<p>
+If the <code>axis_scale</code> keyword is used with a parameter of <code>"auto"</code> (the default parameter), then use of the <code>axis_limits</code> keyword will result in axis limits with the specified values. If the <code>axis_scale</code> keyword is used with a parameter of <code>"equal"</code>, then use of the <code>axis_limits</code> keyword must be consistent with "equal" axes or it may not have the desired effect. The ratio of the vertical to horizontal dimensions of the plot box for two-dimensional plots is 3 to 4. If complete axis limits, such as:
+</p>
+<pre>     axis_limits   0 4 0 3</pre>
+<p>
+are specified, then the plot axes will have these limits (a 3-to-4 axis ratio is requested). If limits such as 0 4 0 2 are specified, the resulting plot axis limits will be 0 4 -0.5 2.5. If limits such as 0 3 0 3 are specified, the resulting plot axis limits will be -0.5 3.5 0 3. To maintain the required 3-to-4 ratio for <code>"equal"</code> axes, the axis limits are always expanded, never reduced; and the axis limits are chosen to center the mean value of the specified limits.
+</p>
+
+<h3 id="view3d"><code>view3d</code></h3>
+<p>
+(3d plots only)
+</p>
+<p>
+The keyword, <code>view3d</code>, specifies the azimuth and elevation of the view direction for three-dimensional plots. The first parameter, azimuth, is the angle of the view direction measured counterclockwise from the x axis in the x-y plane. The second parameter, elevation, is the angle of the view direction measured up from the x-y plane. Both positive and negative azimuth values are allowed, but elevation may vary only from 0 to 90 degrees (0 &le; elevation &le; 90 deg). The default values for <code>view3d</code> are azimuth = 30 degrees and elevation = 30 degrees. See Examples <a href="#Example_6">6</a>, <a href="#Example_7">7</a>, and <a href="#Example_8">8</a>, below.
+</p>
+
+<h3 id="minor_ticks"><code>minor_ticks</code></h3>
+<p>
+The keyword, <code>minor_ticks</code>, specifies whether minor tick marks are drawn on all axes or not. It has two possible parameters, <code>"on"</code> and <code>"off"</code>. The default parameter for <code>minor_ticks</code> is <code>"off"</code>. See Examples <a href="#Example_1">1</a>, <a href="#Example_3">3</a>, <a href="#Example_5">5</a>, <a href="#Example_7">7</a>, and <a href="#Example_9">9</a>, below.
+</p>
+
+<h3 id="grid"><code>grid</code></h3>
+<p>
+The keyword, <code>grid</code>, specifies whether grid lines should be drawn and how they should be drawn. If grid lines should be drawn, there are two parameters. The first parameter is a character specifying whether grid lines are solid, dashed, or dotted:
+</p>
+<pre>     l (solid lines)
+     d (dashed lines)
+     . (dotted lines)
+</pre>
+<p>
+The second parameter is a character or hexadecimal number specifying line color. The color characters are the same as those used for the <a href="#plot_style"><code>plot_style</code></a> parameter. If it is desired to use a color other than one of those specified by color characters, then a hexadecimal rgb number may be used. These are also described in the <a href="#plot_style"><code>plot_style</code></a> section. If the single parameter, <code>"off"</code>, is used, then grid lines will not be drawn. The default parameter for <code>grid</code> is <code>"off"</code>.
+</p>
+
+<h3 id="axis_labels"><code>xlabel<br />ylabel<br />zlabel<br />title</code></h3>
+<p>
+The keywords, <code>xlabel</code>, <code>ylabel</code>, <code>zlabel</code>, and <code>title</code>, specify the labels for each of the axes and the title of the plot. For polar plots <code>xlabel</code> refers to the angle (theta) values, and <code>ylabel</code> refers to the radial (r) values. The escape sequence, \n, may be inserted in any of these strings to create additional lines. However, if font sizes are large, there may not be enough room in the plot window to display additional lines.
+</p>
+
+<h3 id="bin_width"><code>bin_width</code></h3>
+<p>
+(Histograms only)
+</p>
+<p>
+The keyword, <code>bin_width</code>, specifies the histogram bin width (width of the plotted bars). If no bin width is specified, a theoretical value is used. Two formulas for bin-width estimation are:
+</p>
+<pre>     bin_width = 3.49*sigma/N<span class="sup">1/3</span>    Scott<span class="sup">1</span>
+     bin_width = 2*(Q3 - Q1)/N<span class="sup">1/3</span>   Freedman, Diaconis<span class="sup">2</span>
+</pre>
+<p>
+The Scott formula is based on the gaussian (normal) distribution and uses the sample standard deviation and number of samples. The Freedman-Diaconis formula is based on the interquartile range and number of samples. Q1 and Q3 are the first and third quartile values, respectively. The Freedman-Diaconis formula is used as the default bin-width estimate.<br />
+References:<br />
+1. David W. Scott, "On Optimal and Data-based Histograms," <i>Biometrika</i>, <b>66</b>, 605-610, 1979.<br />
+2. David Freedman and Persi Diaconis, "On the Histogram as a Density Estimator: L_2 Theory," <i>Zeitschrift f&uuml;r Wahrscheinlichkeitstheorie und Verwandte Gebiete</i>, <b>57</b>, 453-476, 1981.
+</p>
+
+<h3 id="bin_value"><code>bin_value</code></h3>
+<p>
+(Histograms only)
+</p>
+<p>
+The keyword, <code>bin_value</code>, specifies what quantity is to be plotted for each bin. The possible quantities are:
+</p>
+<pre>     "number"
+     "fraction"
+     "percent"
+</pre>
+<p>
+The <code>"number"</code> bin-value means that the number of samples in each bin will be plotted. The <code>"fraction"</code> bin-value means that the number of samples in each bin divided by the total number of samples will be plotted. The <code>"percent"</code> bin-value means that 100 times the number of samples in each bin divided by the total number of samples will be plotted. The default parameter for <code>bin_value</code> is <code>"percent"</code>.
+</p>
+
+<h3 id="bin_ref"><code>bin_ref</code></h3>
+<p>
+(Histograms only)
+</p>
+<p>
+The keyword, <code>bin_ref</code>, specifies a histogram bin reference. The possible values are:
+</p>
+<pre>     "mean"
+     "zero"
+     "integers"
+</pre>
+<p>
+The <code>"mean"</code> bin-reference means that a bin will be centered on the sample mean, and enough bins will be added below and above that bin to include all sample values. The <code>"zero"</code> bin-reference assumes that all sample values are necessarily greater than or equal to zero and makes the lowest bin start at 0. The <code>"integers"</code> bin-reference assumes that all sample values are integers and centers bins on consecutive integers from the minimum sample value to the maximum sample value. The bin width for this bin reference is set to 1. This case may be useful if, for example, the frequency of occurrence of various pixel intensities in an image is of interest. The intensity values might then be integers from 0 to 255. The default parameter for <code>bin_ref</code> is <code>"mean"</code>.
+</p>
+
+<h3 id="ninterp"><code>ninterp</code></h3>
+<p>
+(3d color plots only)
+</p>
+<p>
+The keyword, <code>ninterp</code>, specifies the number of additional intervals into which x and y data are divided. The default value is 20. For example, if x and y data have 10 intervals (11 values), then 20 additional intervals between each pair of x values and each pair of y values results in a total of 201 interpolated x and y values. See the discussion for the <a href="#3d_color_plot_type">3d color plot type</a>.
+</p>
+
+<h3 id="contours"><code>contours</code></h3>
+<p>
+(Contour plots only)
+</p>
+<p>
+The keyword, <code>contours</code>, specifies the number of contour lines to be drawn. The default number is:
+</p>
+<pre>     2*nzticks - 1</pre>
+<p>
+where nzticks is the number of tick marks on the z axis. Contour lines are drawn for each tick-mark value on the z axis plus values half way between each pair of tick marks. If a number greater than one is specified using the <code>contours</code> keyword, then that number of equally-spaced contour lines will be drawn beginning with the minimum z-axis tick-mark value and ending with the maximum z-axis tick-mark value. See Examples <a href="#Example_8">8</a> and <a href="#Example_9">9</a> below.
+</p>
+
+<h3 id="contour_color"><code>contour_color</code></h3>
+<p>
+(3d contour plots only)
+</p>
+<p>
+The keyword, <code>contour_color</code>, specifies the color of contour lines in three-dimensional contour plots. The color can be specified using one of the color characters described in the <a href="#plot_style"><code>plot_style</code></a> section, or it can be specified using rgba values as also described in the plot_style section. The default color is black if the <a href="#background_color">background_color</a> is white (the default value) and is white if the background_color is black.
+</p>
+
+<h3 id="mesh_color"><code>mesh_color</code></h3>
+<p>
+(3d mesh plots only)
+</p>
+<p>
+The keyword, <code>mesh_color</code>, specifies the color of mesh lines in three-dimensional mesh plots. The color can be specified using one of the color characters described in the <a href="#plot_style"><code>plot_style</code></a> section, or it can be specified using rgba values as also described in the plot_style section. The default color is black if the <a href="#background_color">background_color</a> is white (the default value) and is white if the background_color is black.
+</p>
+
+<h3 id="stems"><code>stems</code></h3>
+<p>
+(Points plots only)
+</p>
+<p>
+The keyword, <code>stems</code>, specifies that for rectangular two-dimensional points plots vertical lines (parallel to the y axis) are drawn from each data point to the x axis (minimum y value) or to a specified y value. For polar plots radial lines are drawn from each data point to the origin (minimum r value) or to a specified r value. For three-dimensional points plots vertical lines (parallel to the z axis) are drawn from each data point to the xy plane at the minimum z value or to the xy plane at a specified z value. The color of the lines will be the color specified for the corresponding plot-style keyword. The possible parameters are <code>"on"</code> (lines drawn to ymin, rmin, or zmin), <code>"off"</code> (no lines drawn), or a specific y, r, or z value. The default parameter is <code>"off"</code>.
+</p>
+
+<h3 id="rect_coords"><code>rect_coords</code></h3>
+<p>
+(Linear axis type only)
+</p>
+<p>
+The keyword, <code>rect_coords</code>, specifies five coordinates, or properties, of a rectangle that is to be added to a plot. The coordinates of the rectangle are x and y coordinates of the center of the rectangle, rectangle width (long dimension) and height (short dimension), and the angle (degrees) the rectangle is to be rotated counterclockwise from the positive x axis.
+</p>
+
+<h3 id="rect_style"><code>rect_style</code></h3>
+<p>
+(Linear axis type only)
+</p>
+<p>
+The keyword, <code>rect_style</code>, specifies the type, color, and width of line used to draw a rectangle on a plot and is similar to the <a href="#plot_style"><code>plot_style</code></a> keyword. The first parameter is a character specifying the type of line used to draw the rectangle and is l for solid lines, d for dashed lines, or . for dotted lines. The second parameter is either a character or hexadecimal color value specifying line color. The line color can be specified by any of the characters listed in the <a href="#plot_style"><code>plot_style</code></a> section or by a hexadecimal color value. The hexadecimal color value must be preceded by 0x to distinguish it as a hexadecimal value. The line width is a positive integer whose default value is 1.
+</p>
+
+<h3 id="ellipse_coords"><code>ellipse_coords</code></h3>
+<p>
+(Linear axis type only)
+</p>
+<p>
+The keyword, <code>ellipse_coords</code>, specifies five coordinates, or properties, of an ellipse that is to be added to a plot. The coordinates of the ellipse are x and y coordinates of the center of the ellipse, ellipse width (major axis) and height (minor axis), and the angle (degrees) the ellipse is to be rotated counterclockwise from the positive x axis.
+</p>
+
+<h3 id="ellipse_style"><code>ellipse_style</code></h3>
+<p>
+(Linear axis type only)
+</p>
+<p>
+The keyword, <code>ellipse_style</code>, specifies the type, color, and width of line used to draw an ellipse on a plot and is similar to the <a href="#plot_style"><code>plot_style</code></a> keyword. The first parameter is a character specifying the type of line used to draw the ellipse and is l for solid lines, d for dashed lines, or . for dotted lines. The second parameter is either a character or hexadecimal color value specifying line color. The line color can be specified by any of the characters listed in the <a href="#plot_style"><code>plot_style</code></a> section or by a hexadecimal color value. The hexadecimal color value must be preceded by 0x to distinguish it as a hexadecimal value. The line width is a positive integer whose default value is 1.
+</p>
+
+<h3 id="line_coords"><code>line_coords</code></h3>
+<p>
+The keyword, <code>line_coords</code>, specifies the coordinates of a line to be added to a plot. The coordinates of the end points of the line are specified as x1 x2 y1 y2 for a two-dimensional plot and as x1 x2 y1 y2 z1 z2 for a three-dimensional plot. See <a href="#Example_4">Example 4</a> below.
+</p>
+
+<h3 id="line_style"><code>line_style</code></h3>
+<p>
+The keyword, <code>line_style</code>, specifies the type, color, and width of a line to be drawn on a plot and is similar to the <a href="#plot_style"><code>plot_style</code></a> keyword. The first parameter is a character specifying the type of line to be drawn and is l for a solid line, d for a dashed line, or . for a dotted line. The second parameter is either a character or hexadecimal color value specifying line color. The line color can be specified by any of the characters listed in the <a href="#plot_style"><code>plot_style</code></a> section or by a hexadecimal color value. The hexadecimal color value must be preceded by 0x to distinguish it as a hexadecimal value. The line width is a positive integer whose default value is 1. See <a href="#Example_4">Example 4</a> below.
+</p>
+
+<h3 id="symbol_coords"><code>symbol_coords</code></h3>
+<p>
+The keyword, <code>symbol_coords</code>, specifies the coordinates of a symbol to be added to a plot. The coordinates of the symbol location are specified as x y for a two-dimensional plot and as x y z for a three-dimensional plot. See <a href="#Example_2">Example 2</a> below.
+</p>
+
+<h3 id="symbol_style"><code>symbol_style</code></h3>
+<p>
+The keyword, <code>symbol_style</code>, specifies the type (circle, triangle, square, diamond, pentagon, hexagon, +, x, star, or asterisk), color, and size of a symbol to be added to a plot and is similar to the <a href="#plot_style"><code>plot_style</code></a> keyword. The first parameter is a character specifying the type of symbol to be drawn and is one of the following: c (unfilled circle), C (filled circle), t (unfilled triangle), s (unfilled square), S (filled square), i (unfilled diamond), I (filled diamond), p (unfilled pentagon), P (filled pentagon), h (unfilled hexagon), H (filled hexagon), +, x, r, or a. The second parameter is either a character or hexadecimal color value specifying symbol color. The symbol color can be specified by any of the characters listed in the <a href="#plot_style"><code>plot_style</code></a> section or by a hexadecimal color value. The hexadecimal color value must be preceded by 0x to distinguish it as a hexadecimal value. The symbol size is a positive integer whose default value is 6. See <a href="#Example_2">Example 2</a> below.
+</p>
+
+<h3 id="legend_string"><code>legend_string</code></h3>
+<p>
+The keyword, <code>legend_string</code>, specifies the text string to be used in each line of the legend. There should be one line of text for each plot that is drawn. See Examples <a href="#Example_1">1</a> and <a href="#Example_4">4</a> below.
+</p>
+
+<h3 id="legend_coords_abs"><code>legend_coords_abs</code></h3>
+<p>
+The parameters of the keyword, <code>legend_coords_abs</code>, specify the absolute position of the legend anchor point using axis values. For two-dimensional plots there are two parameters (x and y), and for three-dimensional plots there are three parameters (x, y, and z).
+</p>
+
+<h3 id="legend_coords_rel"><code>legend_coords_rel</code></h3>
+<p>
+The parameters of the keyword, <code>legend_coords_rel</code>, specify the legend anchor point relative to the plot box. The first parameter specifies the fractional distance of the legend anchor point between the leftmost and rightmost points of the plot box. The second parameter specifies the fractional distance of the anchor point between the lowermost and uppermost points of the plot box. Values of 0.10 and 0.90 result in the anchor point being 10 percent of the width of the plot box measured from the left side of the plot box and 90 percent of the height of the plot box measured from the bottom of the plot box. Values between 0 and 1 result in the anchor point being inside the plot box. Values less than 0 and greater than 1 result in the anchor point being outside the plot box.
+</p>
+
+<h3 id="legend_anchor"><code>legend_anchor</code></h3>
+<p>
+The keyword, <code>legend_anchor</code>, specifies the direction of the legend anchor point from the legend. The possible parameters are:
+</p>
+<pre>     "center"
+     "north"
+     "northeast"
+     "east"
+     "southeast"
+     "south"
+     "southwest"
+     "west"
+     "northwest"
+</pre>
+<p>
+Here <code>"north"</code> means the anchor point is centered directly above the legend; <code>"east"</code> means the anchor point is centered directly to the right of the legend; etc. All lines containing the keyword, <code>legend_string</code>, should immediately follow one another (no blank lines between them). The lines containing the keywords, <code>legend_coords_abs</code>, <code>legend_coords_rel</code>, and <code>anchor_legend</code>, should immediately follow the last line containing the keyword, <code>legend_string</code>.
+</p>
+
+<h3 id="text_string"><code>text_string</code></h3>
+<p>
+The keyword, <code>text_string</code>, specifies lines of text which can be added to a plot. See Examples <a href="#Example_2">2</a>, <a href="#Example_4">4</a>, <a href="#Example_5">5</a>, <a href="#Example_6">6</a>, <a href="#Example_7">7</a>, and <a href="#Example_8">8</a> below.
+</p>
+
+<h3 id="text_coords_abs"><code>text_coords_abs</code></h3>
+<p>
+The parameters of the keyword, <code>text_coords_abs</code>, specify the absolute position of the text anchor point using axis values. For two-dimensional plots there are two parameters (x and y), and for three-dimensional plots there are three parameters (x, y, and z).
+</p>
+
+<h3 id="text_coords_rel"><code>text_coords_rel</code></h3>
+<p>
+The parameters of the keyword, <code>text_coords_rel</code>, specify the text anchor point relative to the plot box. The first parameter specifies the fractional distance of the text anchor point between the leftmost and rightmost points of the plot box. The second parameter specifies the fractional distance of the anchor point between the lowermost and uppermost points of the plot box.
+</p>
+
+<h3 id="text_anchor"><code>text_anchor</code></h3>
+<p>
+The keyword, <code>text_anchor</code>, specifies the direction of the text anchor point from the text. The possible parameters are:
+</p>
+<pre>     "center"
+     "north"
+     "northeast"
+     "east"
+     "southeast"
+     "south"
+     "southwest"
+     "west"
+     "northwest"
+</pre>
+<p>
+Here <code>"north"</code> means the anchor point is centered directly above the text; <code>"east"</code> means the anchor point is centered directly to the right of the text; etc. All lines containing the keyword, <code>text_string</code>, should immediately follow one another (no blank lines between them). The lines containing the keywords, <code>text_coords_abs</code>, <code>text_coords_rel</code>, and <code>anchor_text</code>, should immediately follow the last line containing the keyword, <code>text_string</code>.
+</p>
+
+<h3 id="image_filename"><code>image_filename</code></h3>
+<p>
+The keyword, <code>image_filename</code>, specifies the file name of an image which can be added to a plot. See <a href="#Example_1">Example 1</a> below.
+</p>
+
+<h3 id="image_coords_abs"><code>image_coords_abs</code></h3>
+<p>
+The parameters of the keyword, <code>image_coords_abs</code>, specify the absolute position of the image anchor point using axis values. For two-dimensional plots there are two parameters (x and y), and for three-dimensional plots there are three parameters (x, y, and z).
+</p>
+
+<h3 id="image_coords_rel"><code>image_coords_rel</code></h3>
+<p>
+The parameters of the keyword, <code>image_coords_rel</code>, specify the image anchor point relative to the plot box. The first parameter specifies the fractional distance of the image anchor point between the leftmost and rightmost points of the plot box. The second parameter specifies the fractional distance of the anchor point between the lowermost and uppermost points of the plot box.
+</p>
+
+<h3 id="image_anchor"><code>image_anchor</code></h3>
+<p>
+The keyword, <code>image_anchor</code>, specifies the direction of the image anchor point from the image. The possible parameters are:
+</p>
+<pre>     "center"
+     "north"
+     "northeast"
+     "east"
+     "southeast"
+     "south"
+     "southwest"
+     "west"
+     "northwest"
+</pre>
+<p>
+Here <code>"north"</code> means the anchor point is centered directly above the image; <code>"east"</code> means the anchor point is centered directly to the right of the image; etc. The lines containing the keywords, <code>image_coords_abs</code>, <code>image_coords_rel</code>, and <code>image_anchor</code>, should immediately follow the line containing the keyword, <code>image_string</code> (no blank lines between them).
+</p>
+
+<h3 id="date_time"><code>date_time</code></h3>
+<p>
+The keyword, <code>date_time</code>, specifies whether a date-and-time string should be drawn in the window and where. Its only parameter specifies the location of the date-time string. If the parameter is <code>"off"</code>, then the date-time string will not be drawn. The possible parameters are:
+</p>
+<pre>     "north"
+     "northeast"
+     "southeast"
+     "south"
+     "southwest"
+     "northwest"
+     "off"
+</pre>
+<p>
+Here <code>"north"</code> means the date-time string is centered at the upper edge of the window; <code>"northeast"</code> means the string is in the upper right corner of the window; etc. The default parameter for <code>date_time</code> is <code>"off"</code>. See <a href="#Example_1">Example 1</a> below.
+</p>
+
+<h3 id="save"><code>save</code></h3>
+<p>
+The keyword, <code>save</code>, specifies that the plot should be saved as an image file immediately after the plot is drawn. Its only parameter specifies the image file name (and path) to use. The file name must have an extension which indicates the image file format. The supported image file formats are bmp (Windows Bitmap), jpeg (Joint Photographic Experts Group), and png (Portable Network Graphics).
+</p>
+
+<h3 id="save_close"><code>save_close</code></h3>
+<p>
+The keyword, <code>save_close</code>, specifies that the plot should be saved as an image file immediately after the plot is drawn, and then the plot window should be closed. Its only parameter specifies the image file name (and path) to use. The requirements for the image file name are the same as for the keyword, <code>save</code>, above.
+</p>
+
+<h3 id="background_color"><code>background_color</code></h3>
+<p>
+The keyword, <code>background_color</code>, specifies the background color of the plot window. It has two possible parameters, <code>"white"</code> and <code>"black"</code>. If <code>"black"</code> is chosen, the plot box, tick marks, axis labels, title, and text are white. The default value is <code>"white"</code>.
+</p>
+
+<h3 id="background_image"><code>background_image</code></h3>
+<p>
+(2d plots only)
+</p>
+<p>
+The keyword, <code>background_image</code>, specifies the file name of a background image, such as a map, to be displayed in the plot box and how it should be scaled. It has two parameters, the background-image file name and the background-image style, which specifies scaling of the image. The background-image style has four possible values:
+</p>
+<pre>     "center"
+     "fill"
+     "scale"
+     "zoom"
+</pre>
+<p>
+The first value, <code>"center"</code>, means that the image is centered in the plot box, and as much of it is displayed as possible with no scaling. The second value, <code>"fill</code>", means that the image is scaled in both the horizontal and vertical directions so that it fills the plot box. The third value, <code>"scale"</code>, means that the image is scaled the same amount in both directions so that the entire image is contained in the plot box and fills the plot box in at least one direction. The fourth value, <code>"zoom"</code>, means that the image is scaled the same amount in both directions so that it fills the plot box in at least one direction and overflows, but is clipped, in the other direction. The default value for background-image style is <code>"fill"</code>.
+</p>
+
+<h3 id="window_size"><code>window_size</code></h3>
+<p>
+The keyword, <code>window_size</code>, takes two integer parameters which specify the width and height of the plot window in pixels. The default values are 768 (width), and 576 (height).
+</p>
+
+<h3 id="plot_box"><code>plot_box</code></h3>
+<p>
+The keyword, <code>plot_box</code>, specifies whether the box surrounding the plot is drawn or not. It has two possible parameters, <code>"on"</code> and <code>"off"</code>. The default parameter is <code>"on"</code>.
+</p>
+
+<h3 id="tick_marks"><code>x_tick_marks<br />y_tick_marks<br />z_tick_marks</code></h3>
+<p>
+The keywords, <code>x_tick_marks</code>, <code>y_tick_marks</code>, and <code>z_tick_marks</code>, specify whether tick marks are drawn for each axis. They have two possible parameters, <code>"on"</code> and <code>"off"</code>. The default parameters are <code>"on"</code>.
+</p>
+
+<h3 id="tick_labels"><code>x_tick_labels<br />y_tick_labels<br />z_tick_labels</code></h3>
+<p>
+The keywords, <code>x_tick_labels</code>, <code>y_tick_labels</code>, and <code>z_tick_labels</code>, specify whether labels are drawn at each tick mark for each axis. They have two possible parameters, <code>"on"</code> and <code>"off"</code>. The default parameters are <code>"on"</code>.
+</p>
+
+<h3 id="font_name"><code>font_name</code></h3>
+<p>
+The keyword, <code>font_name</code>, specifies the font name, or family, to be used in labeling the plot. The default font is <code>"Sans"</code>.
+</p>
+
+<h3 id="font_sizes"><code>font_size_date_time<br />font_size_legend<br />font_size_text<br />
+font_size_tick_labels<br />font_size_axis_labels<br />font_size_title</code></h3>
+<p>
+The keywords, <code>font_size_date_time</code>, <code>font_size_legend</code>, <code>font_size_text</code>, <code>font_size_tick_labels</code>, <code>font_size_axis_labels</code>, and <code>font_size_title</code>, specify font sizes, in pixels, of the date-time string, legend, text, tick-mark labels, axis labels, and plot title, respectively. Default font sizes are:
+</p>
+<pre>     date-time string: 12
+     legend:           12
+     text:             12
+     tick-mark labels: 14
+     axis labels:      16
+     plot title:       18
+</pre>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Keyword_summary">Keyword summary</h2>
+<p>
+Following is a list of keywords and example parameters. Where specific parameters must be used, the possible parameters are listed in braces, {}. Default values are in <b>bold</b>. Descriptions of each keyword are in the <a href="#Parameter_file">Parameter file</a> section. A printable <a href="./help_files/keyword_summary.pdf">one-page version</a> of this keyword summary can be used as a reference.
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/sinc.txt"
+     file_format             "%lf %lf"
+     plot_type               {"points" "histogram" "contour" "color" "mesh"}
+     plot_style              {ld.cCtTsSiIpPhH+xra} {kaswrylqbfmogtnp} <b>1</b> or <b>6</b>                # 2d points plot type
+     plot_style              {lbB} {kaswrylqbfmogtnp} <b>1</b>                                     # 2d histogram plot type
+     plot_style              {"auto"} <b>1</b>   or   {kaswrylqbfmogtnp} <b>1</b>                         # 2d contour plot type
+     plot_style              {"nearest" "bilinear"} zblack zwhite                           # 2d color plot type
+     plot_style              {ld.cCtTsSiIpPhH+xra} {kaswrylqbfmogtnp} <b>1</b> or <b>6</b>                # 3d points plot type
+     plot_style              {kaswrylqbfmogtnpx} {kaswrylqbfmogtnpx}                        # 3d contour plot type
+     plot_style              {"auto"} <b>0xFF</b>                                                  # 3d color plot type
+     plot_style              {"auto"} <b>0xFF</b>   or   {kaswrylqbfmogtnpx} {kaswrylqbfmogtnpx}   # 3d mesh plot type
+     axis_type               {"linear" "semilogx" "semilogy" "loglog" "polar" "3d"}
+     axis_scale              {<b>"auto"</b> "equal"}
+     axis_limits             xmin xmax ymin ymax   or   * * rmin rmax   or   xmin xmax ymin ymax zmin zmax
+     view3d                  <b>30</b> <b>30</b>                                                          # 3d axis type
+     minor_ticks             {"on" <b>"off"</b>}
+     grid                    {ld.} {kaswrylqbfmogtnp}   or   <b>"off"</b>
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "z axis"
+     title                   "Figure 1"
+     bin_width               1.23                                                           # histogram plot type
+     bin_value               {"number" "fraction" <b>"percent"</b>}                                # histogram plot type
+     bin_ref                 {<b>"mean"</b> "zero" "integers"}                                     # histogram plot type
+     ninterp                 <b>20</b>                                                             # 3d color plot type
+     contours                25                                                             # contour plot type
+     contour_color           {<b>k</b>aswrylqbfmogtnp}                                             # 3d contour plot type
+     mesh_color              {<b>k</b>aswrylqbfmogtnp}                                             # 3d mesh plot type
+     stems                   {"on" <b>"off"</b>}   or   0.0                                        # points plot type
+     rect_coords             x0 y0 width height angle                                       # linear axis type
+     rect_style              {ld.} {kaswrylqbfmogtnp} <b>1</b>                                     # linear axis type
+     ellipse_coords          x0 y0 width height angle                                       # linear axis type
+     ellipse_style           {ld.} {kaswrylqbfmogtnp} <b>1</b>                                     # linear axis type
+     line_coords             x1 x2 y1 y2   or   x1 x2 y1 y2 z1 z2
+     line_style              {ld.} {kaswrylqbfmogtnp} <b>1</b>
+     symbol_coords           x1 y1   or   x1 y1 z1
+     symbol_style            {cCtTsSiIpPhH+xra} {kaswrylqbfmogtnp} <b>6</b>
+     legend_string           "data"
+     legend_coords_abs       x1 y1   or   x1 y1 z1
+     legend_coords_rel       xr yr
+     legend_anchor           {"center" "north" "northeast" "east" "southeast" "south" "southwest" "west" "northwest"}
+     text_string             "Measurements made 1 January 2008"
+     text_coords_abs         x1 y1   or   x1 y1 z1
+     text_coords_rel         xr yr
+     text_anchor             {"center" "north" "northeast" "east" "southeast" "south" "southwest" "west" "northwest"}
+     image_filename          "/home/sab/gsegrafix/image_files/tux.png"
+     image_coords_abs        x1 y1   or   x1 y1 z1
+     image_coords_rel        xr yr
+     image_anchor            {"center" "north" "northeast" "east" "southeast" "south" "southwest" "west" "northwest"}
+     date_time               {"north" "northeast" "southeast" "south" "southwest" "northwest" <b>"off"</b>}
+     save                    "/home/sab/gsegrafix/plot.png"
+     save_close              "/home/sab/gsegrafix/plot.png"
+     background_color        {<b>"white"</b> "black"}
+     background_image        "/home/sab/gsegrafix/image_files/map.png" {"center" <b>"fill"</b> "scale" "zoom"}
+     window_size             <b>768</b> <b>576</b>
+     plot_box                {<b>"on"</b> "off"}
+     x_tick_marks            {<b>"on"</b> "off"}
+     y_tick_marks            {<b>"on"</b> "off"}
+     z_tick_marks            {<b>"on"</b> "off"}
+     x_tick_labels           {<b>"on"</b> "off"}
+     y_tick_labels           {<b>"on"</b> "off"}
+     z_tick_labels           {<b>"on"</b> "off"}
+     font_name               <b>"Sans"</b>
+     font_size_date_time     <b>12</b>
+     font_size_legend        <b>12</b>
+     font_size_text          <b>12</b>
+     font_size_tick_labels   <b>14</b>
+     font_size_axis_labels   <b>16</b>
+     font_size_title         <b>18</b>
+
+Notes
+     1. x1, x2, y1, y2, z1, z2 represent absolute coordinate values with respect to axis values.
+     2. xr, yr represent relative coordinate values with respect to plot-box limits.
+        xr = 0, yr = 0 refers to lower left corner of plot box; xr = 1, yr = 1 refers to upper
+        right corner of plot box.
+     3. For 2d and 3d points plot types the default value of the optional third plot_style
+        parameter is 1 for line width or 6 for symbol size.
+     4. For histogram plot types the optional third plot_style parameter applies only if lines,
+        rather than bars, are used for plotting.
+     5. The default value of the optional third line_style parameter, line width, is 1.
+     6. The default value of the optional third symbol_style parameter, symbol size, is 6.
+     7. Hexadecimal color specifications may be used instead of the listed color characters.
+        The color value must be preceded by <code>0x</code> or <code>0X</code> and must include the alpha value
+        (e.g., 0xD0723EFF, opaque copper).
+</pre>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Data_files">Data files</h2>
+
+<h3 id="2d_points_plots">2d points plots</h3>
+<h4 id="Rectangular_coordinates">Rectangular coordinates</h4>
+<p>
+The data file for a two-dimensional points plot contains columns of numbers. The <code>file_format</code> parameters specify which columns are used as x and y coordinates of plotted points. The column used for x coordinates must precede the column used for y coordinates, but the two columns do not have to be next to each other. All columns must be the same length. For <code>"semilogx"</code>, <code>"semilogy"</code>, and <code>"loglog"</code> axes the logarithms of the absolute values of the data are plotted. More than one curve or line can be plotted using one pair of columns of numbers by inserting asterisks (*) in each of the two columns where one curve ends and the next one begins. An example is:
+</p>
+<pre>     0.00  0.00
+     0.20  0.04
+     0.40  0.16
+     0.60  0.36
+        *     *
+     1.00  1.00
+     1.20  1.44
+     1.40  1.96
+     1.60  2.56
+     1.80  3.24
+        *     *
+     2.40  5.76
+     2.60  6.76
+     2.80  7.84
+</pre>
+<p>
+The data above would result in three curves being plotted, the first with 4 points, the second with 5 points, and the third with 3 points. If a data file contains more than two columns of numbers and if columns containing asterisks are not being plotted, the format for each of these columns should be <code>"%*s"</code> so that both numbers and asterisks will be recognized. An example is:
+</p>
+<pre>     0.00  0.00  0.000  0.000
+     0.20  0.04  0.100  0.001
+     0.40  0.16  0.200  0.008
+     0.60  0.36  0.300  0.027
+        *     *  0.400  0.064
+     1.00  1.00  0.500  0.125
+     1.20  1.44  0.600  0.216
+     1.40  1.96  0.700  0.343
+     1.60  2.56  0.800  0.512
+     1.80  3.24  0.900  0.729
+        *     *  1.000  1.000
+     2.40  5.76  1.100  1.331
+     2.60  6.76  1.200  1.728
+     2.80  7.84  1.300  2.197
+</pre>
+<p>
+The format for plotting column 4 as a function of column 3 would be <code>"%*s %*s %lf %lf"</code>. See Examples <a href="#Example_1">1</a>, <a href="#Example_2">2</a>, and <a href="#Example_3">3</a> below.
+</p>
+
+<h4 id="Polar_coordinates">Polar coordinates</h4>
+<p>
+The data file for a polar plot contains columns of numbers. The <code>file_format</code> parameters specify which columns are used as theta and r coordinates of plotted points. The column used as theta coordinates must precede the column used for r coordinates, but the two columns do not have to be next to each other. All columns must be the same length. The units of theta coordinates must be in radians. As is the case for two-dimensional plots with rectangular coordinates, more than one curve or line can be plotted using one pair of columns of numbers by inserting asterisks (*) in each of the two columns where one curve ends and the next one begins. See <a href="#Example_5">Example 5</a> below.
+</p>
+
+<h3 id="Histograms">Histograms</h3>
+<p>
+The data file for a histogram need contain only one column of numbers. If the file contains more than one column, the <code>file_format</code> parameters specify which column to use. All columns must be the same length. See <a href="#Example_4">Example 4</a> below.
+</p>
+
+<h3 id="3d_points_plots">3d points plots</h3>
+<p>
+The data file for a three-dimensional points plot contains columns of numbers. The <code>file_format</code> parameters specify which columns are used as x, y, and z coordinates of plotted points. The column used as x coordinates must precede the column used as y coordinates, and the column used as y coordinates must precede the column used as z coordinates. However, the three columns do not have to be next to each other. All columns must be the same length. More than one curve or line can be plotted using three columns of numbers by inserting asterisks (*) in each of the three columns where one curve ends and the next one begins. See <a href="#Example_6">Example 6</a> below.
+</p>
+
+<h3 id="Contour_color_mesh_plots">Contour, color, and mesh plots</h3>
+<p>
+Data files for three-dimensional <code>"contour"</code>, <code>"color"</code>, and <code>"mesh"</code> plots and two-dimensional <code>"contour"</code> and <code>"color"</code> plots are the same. The first line contains two numbers, the number of x coordinates, nx, and the number of y coordinates, ny. The second line contains the nx values of the x coordinates. The third line contains the ny values of the y coordinates. The remainding lines contain the values of the z coordinates for pairs of x and y coordinates. The z-coordinate data is arranged in a matrix so that the row number corresponds to the index of the x coordinate and the column number corresponds to the index of the y coordinate. The complete data file looks like the following:
+</p>
+<pre>          nx      ny                                 
+        x(1)    x(2)    x(3) ...    x(i) ...    x(nx)
+        y(1)    y(2)    y(3) ...    y(j) ...    y(ny)
+      z(1,1)  z(1,2)  z(1,3) ...  z(1,j) ...  z(1,ny)
+      z(2,1)  z(2,2)  z(2,3) ...  z(2,j) ...  z(2,ny)
+      z(3,1)  z(3,2)  z(3,3) ...  z(3,j) ...  z(3,ny)
+                             ...                     
+      z(i,1)  z(i,2)  z(i,3) ...  z(i,j) ...  z(i,ny)
+                             ...                     
+     z(nx,1) z(nx,2) z(nx,3) ... z(nx,j) ... z(nx,ny)
+</pre>
+<p>
+Data files such as this can be written by calling an Octave function such as <a href="./help_files/data_save.txt"> data_save</a> or a C function such as <a href="./help_files/data_C_save.txt"> data_C_save</a>. See Examples <a href="#Example_7">7</a>, <a href="#Example_8">8</a>, <a href="#Example_9">9</a>, <a href="#Example_10">10</a>, and <a href="#Example_11">11</a> below.
+</p>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Operation">Operation</h2>
+
+<h3 id="Running_GSEGrafix_from_terminal_window">Running GSEGrafix from terminal window</h3>
+<p>
+As described in the <a href="#Introduction">Introduction</a> GSEGrafix can be run from a terminal command line by using the gsegrafix command:
+</p>
+<pre>     $ gsegrafix &amp;</pre>
+<p>
+The program can also be run by using either the gsegrafix or gsegraf command followed by the name of a parameter file:
+</p>
+<pre>     $ gsegrafix /home/sab/gsegrafix/param_files/sinc_param.txt &amp;</pre>
+<p>or:</p>
+<pre>     $ gsegraf /home/sab/gsegrafix/param_files/sinc_param.txt &amp;</pre>
+<p>
+This help file can be displayed by using either the gsegrafix or gsegraf command followed by <code>-h</code>:
+</p>
+<pre>     $ gsegrafix -h</pre>
+<p>or:</p>
+<pre>     $ gsegraf -h</pre>
+
+<h3 id="Running_GSEGrafix_from_Octave_program">Running GSEGrafix from Octave program</h3>
+<p>
+GSEGrafix can be run from an <a href="http://www.octave.org/">Octave</a> program by calling an Octave function such as <a href="./help_files/gsegraf_plot.txt"> gsegraf_plot</a>. This function writes a parameter file and then uses gsegraf to create the corresponding plot. The first input to the function is the name of the parameter file to be created. The remaining inputs are keyword-argument pairs to be written to the parameter file. All inputs must be strings (enclosed in double quotes) and separated by commas. If all or part of an argument needs to be quoted in the parameter file, the double-quote escape sequence (\") must be used for these additional quotes. An example of how to call gsegraf_plot is:
+</p>
+<pre>     gsegraf_plot("./sinc_param.txt",
+                  "file_name     \"./sinc.txt\"",
+                  "file_format   \"%lf %lf\"",
+                  "plot_type     \"points\"",
+                  "plot_style    lk",
+                  "axis_type     \"linear\"",
+                  "grid          ls",
+                  "xlabel        \"x axis\"",
+                  "ylabel        \"y axis\"",
+                  "title         \"sin(x)/x\"");
+</pre>
+
+<h3 id="Running_GSEGrafix_from_C_program">Running GSEGrafix from C program</h3>
+<p>
+GSEGrafix can be run from a C program by calling a C function such as <a href="./help_files/gsegraf_C_plot.txt"> gsegraf_C_plot</a>. As described above for an Octave function, the C function writes a parameter file and then uses gsegraf to create the corresponding plot. The only difference for calling the C function is that the list of keyword-argument pairs must be terminated with a <code>NULL</code> pointer:
+</p>
+<pre>     gsegraf_C_plot("./sinc_param.txt",
+                    "file_name     \"./sinc.txt\"",
+                    "file_format   \"%lf %lf\"",
+                    "plot_type     \"points\"",
+                    "plot_style    lk",
+                    "axis_type     \"linear\"",
+                    "grid          ls",
+                    "xlabel        \"x axis\"",
+                    "ylabel        \"y axis\"",
+                    "title         \"sin(x)/x\"",
+                    NULL);
+</pre>
+
+<h3 id="Zoom_capability">Zoom capability</h3>
+<p>
+The zoom capability works for all two-dimensional rectangular plots and histograms. To use the zoom capability click the left mouse button at one corner of the area to be expanded and drag the mouse to the opposite corner of this area. The points within the zoom rectangle will be confined within the plot border. When the left mouse button is released, the plot will be redrawn showing at least the region defined by the zoom rectangle. "Nice" tick-mark labels will be chosen. To redraw the original plot click the right mouse button in the plot window.
+</p>
+
+<h3 id="Save_As_menu_button">Save As menu button</h3>
+<p>
+To save a plot as an image file click the File menu button and then the Save As button. A file-chooser dialog box will appear and can be used to choose the image file name. The file name must have an extension which indicates the image file format. The supported image file formats are bmp (Windows Bitmap), jpeg (Joint Photographic Experts Group), and png (Portable Network Graphics). Sample image file names are:
+</p>
+<pre>     plot.bmp
+     plot.jpeg
+     plot.png
+</pre>
+<p>
+The quality parameter for jpeg files is 75.
+</p>
+
+<h3 id="Axis_Limits_menu_button">Axis Limits menu button</h3>
+<p>
+To change the axis limits for a plot click the View menu button and then the Axis Limits button. A dialog box can then be used to specify new axis limits. This method works for all plots. Only the r-axis limits can be changed in polar plots. To redraw the original plot click the right mouse button in the plot window.
+</p>
+
+<h3 id="Rotate_3d_Axes_menu_button">Rotate 3d Axes menu button</h3>
+<p>
+To change the orientation of three-dimensional plots click the View menu button and then the Rotate 3d Axes button. A dialog box can then be used to specify new azimuth and elevation angles. The reference line for the first angle, azimuth, is the projection in the x-y plane of a line out of the screen toward the viewer (perpendicular to the screen). Azimuth is the angle measured clockwise from the reference line to the positive x axis. The second angle, elevation, is the angle between a line out of the screen toward the viewer and the x-y plane. This definition results in points with positive x and y coordinates being closest to the viewer for azimuth values between 0 and 90 degrees. When both angles are zero, the positive x axis is perpendicular to the screen toward the viewer, the positive y axis is toward the right in the plane of the screen, and the positive z axis is up in the plane of the screen. Both angles are specified in degrees. To redraw the original plot click the right mouse button in the plot window.
+</p>
+
+<h3 id="Label_Contours_menu_button">Label Contours menu button</h3>
+<p>
+To activate the contour-labeling function for two-dimensional contour plots click the View menu button and then the Label Contours button. The mouse cursor changes to a cross hair when this button is clicked the first time. As the mouse is moved interpolated values of the z coordinate at the mouse position are displayed in the upper left corner of the plot window when the mouse is within the area where z coordinates are available. The contour plot corresponding to the z-axis values is indicated above the z-axis values as shown below.
+</p>
+<pre>     contour plot 1
+     z = 1.23456
+</pre>
+<p>
+If there is more than one contour plot, the up-arrow key can be clicked to change to the next contour plot. Clicking the down-arrow key changes to an earlier plot. When the cursor is positioned on or near a contour line and the left mouse button is pressed, the contour value of the nearest contour line is drawn at the mouse position. The font size of contour labels is the same as that for text. The cursor is confined to the plot window in this mode. To leave this mode and return the mouse cursor to its default shape, click the Label Contours button a second time.
+</p>
+
+<h3 id="Display_Coordinates_menu_button">Display Coordinates menu button</h3>
+<p>
+To activate the xy-coordinates display function click the View menu button and then the Display Coordinates button. The mouse cursor changes to a cross hair when this button is clicked the first time. Values of the x and y coordinates of the cursor are displayed in the lower left corner of the the plot window when the mouse is within the plot box. For two-dimensional color and contour plots, interpolated values of the z coordinate at the mouse position are displayed just below the cursor when the mouse is within the area where z coordinates are available. The font size of the coordinates display is the same as that for text. The cursor is confined to the plot window in this mode. To turn the coordinates display off and return the mouse cursor to its default shape, click the Display Coordinates button a second time. This function works for two-dimensional plots only.
+</p>
+
+<h3 id="UTF-8_escape_sequences">UTF-8 escape sequences</h3>
+<p>
+UTF-8 escape sequences can be used to specify characters which are not available on the keyboard for <code>xlabel</code>, <code>ylabel</code>, <code>zlabel</code>, <code>title</code>, <code>legend_string</code>, and <code>text_string</code>. These codes can be found in the Unicode Character Map. The Unicode Character Map can be run with the command <code>gucharmap</code>. The codes can be specified with either hexadecimal or octal escape sequences. These codes are <code>\xhh</code> and <code>\ooo</code>, respectively. UTF-8 hexadecimal escape sequences for Greek letters and some common mathematical symbols are listed below.
+</p>
+
+
+<div class="text_captions">
+<a id="Greek_letters">Greek letters (Sans font)</a>
+</div>
+
+<!-- Table: UTF-8 hexadecimal escape sequences for upper- and lower-case Greek letters -->
+<table summary="UTF-8 hexadecimal escape sequences for upper- and lower-case Greek letters.">
+<!-- <caption>Greek letters (Sans font)</caption> -->
+
+<thead>
+<tr>
+<th>name</th>
+<th>letters</th>
+<th>escape sequences</th>
+<th>name</th>
+<th>letters</th>
+<th>escape sequences</th>
+</tr>
+</thead>
+
+<tr>
+<td>alpha</td><td>&Alpha; &alpha;</td><td>\xCE\x91&nbsp;&nbsp;&nbsp;\xCE\xB1</td>
+<td>nu</td><td>&Nu; &nu;</td><td>\xCE\x9D&nbsp;&nbsp;&nbsp;\xCE\xBD</td>
+</tr>
+
+<tr>
+<td>beta</td><td>&Beta; &beta;</td><td>\xCE\x92&nbsp;&nbsp;&nbsp;\xCE\xB2</td>
+<td>xi</td><td>&Xi; &xi;</td><td>\xCE\x9E&nbsp;&nbsp;&nbsp;\xCE\xBE</td>
+</tr>
+
+<tr>
+<td>gamma</td><td>&Gamma; &gamma;</td><td>\xCE\x93&nbsp;&nbsp;&nbsp;\xCE\xB3</td>
+<td>omicron</td><td>&Omicron; &omicron;</td><td>\xCE\x9F&nbsp;&nbsp;&nbsp;\xCE\xBF</td>
+</tr>
+
+<tr>
+<td>delta</td><td>&Delta; &delta;</td><td>\xCE\x94&nbsp;&nbsp;&nbsp;\xCE\xB4</td>
+<td>pi</td><td>&Pi; &pi;</td><td>\xCE\xA0&nbsp;&nbsp;&nbsp;\xCF\x80</td>
+</tr>
+
+<tr>
+<td>epsilon</td><td>&Epsilon; &epsilon;</td><td>\xCE\x95&nbsp;&nbsp;&nbsp;\xCE\xB5</td>
+<td>rho</td><td>&Rho; &rho;</td><td>\xCE\xA1&nbsp;&nbsp;&nbsp;\xCF\x81</td>
+</tr>
+
+<tr>
+<td>zeta</td><td>&Zeta; &zeta;</td><td>\xCE\x96&nbsp;&nbsp;&nbsp;\xCE\xB6</td>
+<td>sigma</td><td>&Sigma; &sigma;</td><td>\xCE\xA3&nbsp;&nbsp;&nbsp;\xCF\x83</td>
+</tr>
+
+<tr>
+<td>eta</td><td>&Eta; &eta;</td><td>\xCE\x97&nbsp;&nbsp;&nbsp;\xCE\xB7</td>
+<td>tau</td><td>&Tau; &tau;</td><td>\xCE\xA4&nbsp;&nbsp;&nbsp;\xCF\x84</td>
+</tr>
+
+<tr>
+<td>theta</td><td>&Theta; &theta;</td><td>\xCE\x98&nbsp;&nbsp;&nbsp;\xCE\xB8</td>
+<td>upsilon</td><td>&Upsilon; &upsilon;</td><td>\xCE\xA5&nbsp;&nbsp;&nbsp;\xCF\x85</td>
+</tr>
+
+<tr>
+<td>iota</td><td>&Iota; &iota;</td><td>\xCE\x99&nbsp;&nbsp;&nbsp;\xCE\xB9</td>
+<td>phi</td><td>&Phi; &phi;</td><td>\xCE\xA6&nbsp;&nbsp;&nbsp;\xCF\x86</td>
+</tr>
+
+<tr>
+<td>kappa</td><td>&Kappa; &kappa;</td><td>\xCE\x9A&nbsp;&nbsp;&nbsp;\xCE\xBA</td>
+<td>chi</td><td>&Chi; &chi;</td><td>\xCE\xA7&nbsp;&nbsp;&nbsp;\xCF\x87</td>
+</tr>
+
+<tr>
+<td>lambda</td><td>&Lambda; &lambda;</td><td>\xCE\x9B&nbsp;&nbsp;&nbsp;\xCE\xBB</td>
+<td>psi</td><td>&Psi; &psi;</td><td>\xCE\xA8&nbsp;&nbsp;&nbsp;\xCF\x88</td>
+</tr>
+
+<tr>
+<td>mu</td><td>&Mu; &mu;</td><td>\xCE\x9C&nbsp;&nbsp;\xCE\xBC</td>
+<td>omega</td><td>&Omega; &omega;</td><td>\xCE\xA9&nbsp;&nbsp;\xCF\x89</td>
+</tr>
+
+</table>
+
+
+<p></p>
+
+
+<div class="text_captions">
+<a id="Mathematical_symbols">Mathematical symbols (Sans font)</a>
+</div>
+
+<!-- Table: UTF-8 hexadecimal escape sequences for common mathematical symbols -->
+<table summary="UTF-8 hexadecimal escape sequences for common mathematical symbols">
+<!-- <caption>Mathematical symbols (Sans font)</caption> -->
+
+<thead>
+<tr>
+<th>name</th>
+<th>symbol</th>
+<th>escape sequence</th>
+<th>name</th>
+<th>symbol</th>
+<th>escape sequence</th>
+</tr>
+</thead>
+
+<tr>
+<td>degree sign</td><td>&deg;</td><td>\xC2\xB0</td>
+<td>dot operator</td><td>&sdot;</td><td>\xE2\x8B\x85</td>
+</tr>
+
+<tr>
+<td>minus sign</td><td>&minus;</td><td>\xE2\x88\x92</td>
+<td>asterisk operator</td><td>&lowast;</td><td>\xE2\x88\x97</td>
+</tr>
+
+<tr>
+<td>multiplication sign</td><td>&times;</td><td>\xC3\x97</td>
+<td>plus or minus sign</td><td>&plusmn;</td><td>\xC2\xB1</td>
+</tr>
+
+<tr>
+<td>division sign</td><td>&divide;</td><td>\xC3\xB7</td>
+<td>minus or plus sign</td><td>&#8723;</td><td>\xE2\x88\x93</td>
+</tr>
+
+<tr>
+<td>approximately equal to</td><td>&asymp;</td><td>\xE2\x89\x88</td>
+<td>proportional to</td><td>&prop;</td><td>\xE2\x88\x9D</td>
+</tr>
+
+<tr>
+<td>not equal to</td><td>&ne;</td><td>\xE2\x89\xA0</td>
+<td>infinity</td><td>&infin;</td><td>\xE2\x88\x9E</td>
+</tr>
+
+<tr>
+<td>less than or equal to</td><td>&le;</td><td>\xE2\x89\xA4</td>
+<td>much less than</td><td>&#8810;</td><td>\xE2\x89\xAA</td>
+</tr>
+
+<tr>
+<td>greater than or equal to</td><td>&ge;</td><td>\xE2\x89\xA5</td>
+<td>much greater than</td><td>&#8811;</td><td>\xE2\x89\xAB</td>
+</tr>
+
+<tr>
+<td>superscript 0</td><td>&#8304;</td><td>\xE2\x81\xB0</td>
+<td>subscript 0</td><td>&#8320;</td><td>\xE2\x82\x80</td>
+</tr>
+
+<tr>
+<td>superscript 1</td><td>&sup1;</td><td>\xC2\xB9</td>
+<td>subscript 1</td><td>&#8321;</td><td>\xE2\x82\x81</td>
+</tr>
+
+<tr>
+<td>superscript 2</td><td>&sup2;</td><td>\xC2\xB2</td>
+<td>subscript 2</td><td>&#8322;</td><td>\xE2\x82\x82</td>
+</tr>
+
+<tr>
+<td>superscript 3</td><td>&sup3;</td><td>\xC2\xB3</td>
+<td>subscript 3</td><td>&#8323;</td><td>\xE2\x82\x83</td>
+</tr>
+
+<tr>
+<td>superscript 4</td><td>&#8308;</td><td>\xE2\x81\xB4</td>
+<td>subscript 4</td><td>&#8324;</td><td>\xE2\x82\x84</td>
+</tr>
+
+<tr>
+<td>superscript 5</td><td>&#8309;</td><td>\xE2\x81\xB5</td>
+<td>subscript 5</td><td>&#8325;</td><td>\xE2\x82\x85</td>
+</tr>
+
+<tr>
+<td>superscript 6</td><td>&#8310;</td><td>\xE2\x81\xB6</td>
+<td>subscript 6</td><td>&#8326;</td><td>\xE2\x82\x86</td>
+</tr>
+
+<tr>
+<td>superscript 7</td><td>&#8311;</td><td>\xE2\x81\xB7</td>
+<td>subscript 7</td><td>&#8327;</td><td>\xE2\x82\x87</td>
+</tr>
+
+<tr>
+<td>superscript 8</td><td>&#8312;</td><td>\xE2\x81\xB8</td>
+<td>subscript 8</td><td>&#8328;</td><td>\xE2\x82\x88</td>
+</tr>
+
+<tr>
+<td>superscript 9</td><td>&#8313;</td><td>\xE2\x81\xB9</td>
+<td>subscript 9</td><td>&#8329;</td><td>\xE2\x82\x89</td>
+</tr>
+
+</table>
+
+
+<p>
+See Examples <a href="#Example_4">4</a>, <a href="#Example_5">5</a>, and <a href="#Example_7">7</a> for use of UTF-8 escape sequences. 
+</p>
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<!--
+Greek letters and UTF-8 escape codes
+alpha    &#913; &#945;  \xCE\x91  \xCE\xB1     nu       &#925; &#957;  \xCE\x9D  \xCE\xBD
+beta     &#914; &#946;  \xCE\x92  \xCE\xB2     xi       &#926; &#958;  \xCE\x9E  \xCE\xBE
+gamma    &#915; &#947;  \xCE\x93  \xCE\xB3     omicron  &#927; &#959;  \xCE\x9F  \xCE\xBF
+delta    &#916; &#948;  \xCE\x94  \xCE\xB4     pi       &#928; &#960;  \xCE\xA0  \xCF\x80
+epsilon  &#917; &#949;  \xCE\x95  \xCE\xB5     rho      &#929; &#961;  \xCE\xA1  \xCF\x81
+zeta     &#918; &#950;  \xCE\x96  \xCE\xB6     sigma    &#931; &#963;  \xCE\xA3  \xCF\x83
+eta      &#919; &#951;  \xCE\x97  \xCE\xB7     tau      &#932; &#964;  \xCE\xA4  \xCF\x84
+theta    &#920; &#952;  \xCE\x98  \xCE\xB8     upsilon  &#933; &#965;  \xCE\xA5  \xCF\x85
+iota     &#921; &#953;  \xCE\x99  \xCE\xB9     phi      &#934; &#966;  \xCE\xA6  \xCF\x86
+kappa    &#922; &#954;  \xCE\x9A  \xCE\xBA     chi      &#935; &#967;  \xCE\xA7  \xCF\x87
+lambda   &#923; &#955;  \xCE\x9B  \xCE\xBB     psi      &#936; &#968;  \xCE\xA8  \xCF\x88
+mu       &#924; &#956;  \xCE\x9C  \xCE\xBC     omega    &#937; &#969;  \xCE\xA9  \xCF\x89
+-->
+
+<!--
+Common mathematical symbols and UTF-8 escape codes
+degree sign               &#176;   \xC2\xB0         dot operator       &#8901;  \xE2\x8B\x85
+minus sign                &#8722;  \xE2\x88\x92     asterisk operator  &#8727;  \xE2\x88\x97
+multiplication sign       &#215;   \xC3\x97         plus or minus      &#177;   \xC2\xB1
+division sign             &#247;   \xC3\xB7         minus or plus      &#8723;  \xE2\x88\x93
+approximately equal to    &#8776;  \xE2\x89\x88     not equal to       &#8800;  \xE2\x89\xA0
+proportional to           &#8733;  \xE2\x88\x9D     infinity           &#8734;  \xE2\x88\x9E
+less than or equal to     &#8804;  \xE2\x89\xA4     much less than     &#8810;  \xE2\x89\xAA
+greater than or equal to  &#8805;  \xE2\x89\xA5     much greater than  &#8811;  \xE2\x89\xAB
+superscript 0             &#8304;  \xE2\x81\xB0     subscript 0        &#8320;  \xE2\x82\x80
+superscript 1             &#185;   \xC2\xB9         subscript 1        &#8321;  \xE2\x82\x81
+superscript 2             &#178;   \xC2\xB2         subscript 2        &#8322;  \xE2\x82\x82
+superscript 3             &#179;   \xC2\xB3         subscript 3        &#8323;  \xE2\x82\x83
+superscript 4             &#179;   \xE2\x81\xB4     subscript 4        &#8324;  \xE2\x82\x84
+superscript 5             &#179;   \xE2\x81\xB5     subscript 5        &#8325;  \xE2\x82\x85
+superscript 6             &#179;   \xE2\x81\xB6     subscript 6        &#8326;  \xE2\x82\x86
+superscript 7             &#179;   \xE2\x81\xB7     subscript 7        &#8327;  \xE2\x82\x87
+superscript 8             &#179;   \xE2\x81\xB8     subscript 8        &#8328;  \xE2\x82\x88
+superscript 9             &#179;   \xE2\x81\xB9     subscript 9        &#8329;  \xE2\x82\x89
+-->
+
+<h2 id="Color_specification">Color specification</h2>
+<p>
+Colors can be described with three characteristics: hue (hue varies from 0 to 360 degrees on a color wheel), value or brightness (brightness varies from 0 to 255), and saturation or hue dominance (saturation varies from 0 to 255). The colors black, gray, silver, and white correspond to minimum color saturation of 0 and color brightness of 0 (black), 128 (gray), 192 (silver), and 255 (white). The colors red, yellow, lime, aqua, blue, and fuchsia correspond to maximum color saturation of 255 and maximum color brightness of 255. These colors represent hues of 0 (red), 60 (yellow), 120 (lime), 180 (aqua), 240 (blue), and 300 (fuchsia). The colors maroon, olive, green, teal, navy, and purple correspond to the same hues and maximum color saturation of 255 but with half-maximum brightness of 128.
+</p>
+<p>
+Twelve colors with maximum saturation and maximum brightness which span the spectrum of hues are:
+</p>
+<pre>           color                              rgb number
+
+     <span class="red        ">     </span> red                                  FF0000
+     <span class="orange     ">     </span> orange                               FF8000
+     <span class="yellow     ">     </span> yellow                               FFFF00
+     <span class="chartreuse ">     </span> chartreuse                           80FF00
+     <span class="lime       ">     </span> lime         (green)                 00FF00
+     <span class="springgreen">     </span> spring green                         00FF80
+     <span class="aqua       ">     </span> aqua         (cyan)                  00FFFF
+     <span class="slateblue  ">     </span> slate blue                           0080FF
+     <span class="blue       ">     </span> blue                                 0000FF
+     <span class="violet     ">     </span> violet                               8000FF
+     <span class="fuchsia    ">     </span> fuchsia      (magenta)               FF00FF
+     <span class="pink       ">     </span> pink                                 FF0080
+</pre>
+<p>
+The corresponding colors with maximum saturation but half-maximum brightness are:
+</p>
+<pre>           color                              rgb number
+
+     <span class="maroon     ">     </span> maroon       (dark red)              800000
+     <span class="brown      ">     </span> brown        (dark orange)           804000
+     <span class="olive      ">     </span> olive        (dark yellow)           808000
+     <span class="x408000    ">     </span>              (dark chartreuse)       408000
+     <span class="green      ">     </span> green        (dark green)            008000
+     <span class="x008040    ">     </span>              (dark spring green)     008040
+     <span class="teal       ">     </span> teal         (dark cyan)             008080
+     <span class="x004080    ">     </span>              (dark slate blue)       004080
+     <span class="navy       ">     </span> navy         (dark blue)             000080
+     <span class="x400080    ">     </span>              (dark violet)           400080
+     <span class="purple     ">     </span> purple       (dark magenta)          800080
+     <span class="x800040    ">     </span>              (dark pink)             800040
+</pre>
+<p>
+Some additional colors with varying hue, brightness, and saturation are:
+</p>
+<pre>           color                              rgb number
+
+     <span class="firebrick  ">     </span> firebrick                            B22222
+     <span class="salmon     ">     </span> salmon                               FA8072
+     <span class="coral      ">     </span> coral                                FF7F50
+     <span class="copper     ">     </span> copper                               D0723E
+     <span class="tan        ">     </span> tan                                  D2B48C
+     <span class="khaki      ">     </span> khaki                                F0E68C
+     <span class="gold       ">     </span> gold                                 FFD700
+     <span class="forestgreen">     </span> forest green                         228B22
+     <span class="seagreen   ">     </span> sea green                            2E8B57
+     <span class="aquamarine ">     </span> aquamarine                           7FFFD4
+     <span class="turquoise  ">     </span> turquoise                            40E0D0
+     <span class="royalblue  ">     </span> royal blue                           4169E1
+</pre>
+
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+<h2 id="Examples">Examples</h2>
+
+<h3 id="Example_1">Example 1. Two-dimensional linear plot: y = sin(x)/x</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % sinc.m
+     %
+     % Calculates data for y = sin(x)/x plot.
+
+     x = 6*pi*(-1:0.01:1) + 0.00001;
+     y = sin(x)./x;
+
+     fname = "/home/sab/gsegrafix/data_files/sinc.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10.5f %10.5f\n", [x; y]);
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/sinc.txt"
+     file_format             "%lf %lf"
+     plot_type               "points"
+     plot_style              lk
+
+     file_name               "/home/sab/gsegrafix/data_files/sinc.txt"
+     file_format             "%lf %lf"
+     plot_type               "points"
+     plot_style              cr
+
+     axis_type               "linear"
+
+     minor_ticks             "on"
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     title                   "y = sin(x)/x"
+
+     legend_string           "sin(x)/x"
+     legend_string           "data"
+     legend_coords_rel       0.05 0.95
+     legend_anchor           "northwest"
+
+     image_filename          "/home/sab/gsegrafix/image_files/tux.png"
+     image_coords_rel        -0.15 1.04
+     image_anchor            "center"
+
+     date_time               "southeast"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+A separate data file, <a href="./help_files/sinc.txt">sinc.txt</a>, and parameter file, <a href="./help_files/sinc_param.txt">sinc_param.txt</a>, for this example can be copied and used to reproduce this plot. The path in the arguments for the <code>file_name</code> keyword must correspond to the path where the data file, sinc.txt, is saved.
+</p>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/sinc.png" alt="sinc.png" class="image_examples" />
+</div>
+
+<h3 id="Example_2">Example 2. Two-dimensional linear plot: orbit</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % orbit.m
+     %
+     % Calculates orbit coordinates for specified orbit parameters.
+
+     % Orbit equations
+     %
+     % Reference:
+     %    Roger R. Bate, Donald D. Mueller, Jerry E. White,
+     %    <i>Fundamentals of Astrodynamics,</i> Dover, 1971 (BMW)
+     %
+     % r = p/[1 + e*cos(theta)]           (BMW, p. 20, eq. 1.5-4)
+     % p = a*(1 - e*e)                    (BMW, p. 24, eq. 1.5-6)
+     % p = h*h/mu                         (BMW, p. 26, eq. 1.6-1)
+     % dt = (r*r/h)*dtheta                (BMW, p. 31, eq. 1.7-6)
+     % period = [2*pi/sqrt(mu)]*a^(3/2)   (BMW, p. 33, eq. 1.7-9)
+     % where:
+     %    r      = radius (m) from focus of elliptical orbit
+     %    theta  = angle (rad) from perigee
+     %    a      = semi-major axis (m) of elliptical orbit
+     %    e      = eccentricity of elliptical orbit
+     %    p      = semi-latus rectum (m)
+     %    h      = specific angular momentum (m^2/sec)
+     %    mu     = earth gravitational constant (m^3/sec^2)
+     %    dt     = time differential (sec)
+     %    dtheta = angle differential (rad)
+     %    period = orbit period (sec)
+
+     % Define constants
+     deg2rad = pi/180;           % conversion from degrees to radians (rad/deg)
+     Rsphere = 6.37100079e+06;   % spherical-earth radius (m)
+     mu      = 3.986005e+14;     % earth gravitational constant (m^3/sec^2)
+
+     % Specify orbit parameters
+     e = 0.7;                % eccentricity
+     period = 12;            % period (hr)
+     period = period*3600;   % period (sec)
+
+     % Calculate orbit in polar coordinates
+     a = (period/(2*pi/sqrt(mu)))^(2/3);   % semi-major axis (m)
+     p = a*(1 - e*e);                      % semi-latus rectum (m)
+     h = sqrt(mu*p);                       % specific angular momentum (m^2/sec)
+     theta = (0:0.005:1)'*2*pi;            % angle from perigee (rad)
+     r = p./(1 + e*cos(theta));            % radius (m) from focus of elliptical orbit
+     npts = length(theta);
+
+     % Calculate time as a function of angle from perigee
+     %    dt = (r*r/h)*dtheta
+     %       = (p*p/h)*d(theta)/[1 + e*cos(theta)]^2
+     %    t = (p*p/h)*[e*sin(theta)/((e^2 - 1)*(1 + e*cos(theta))) - ...
+     %                 (1/(e^2 - 1))*(2/(sqrt(1 - e^2)))*atan((1 - e)* ...
+     %                 tan(theta/2)/sqrt(1 - e^2))]
+     time = zeros(npts,1);
+     time = (p^2/h)*(e*sin(theta)./((e^2 - 1)*(1 + e*cos(theta))) - ...
+                     (1/(e^2 - 1))*(2/(sqrt(1 - e^2)))* ...
+                     atan((1 - e)*tan(theta/2)/sqrt(1 - e^2)));
+     time((npts+1)/2:npts) = 2*time((npts+1)/2) - time((npts+1)/2:-1:1);
+     time(npts) = period;
+
+     % Calculate orbit in rectangular coordinates
+     x_orbit = -r.*cos(theta);   % (m)
+     y_orbit = -r.*sin(theta);   % (m)
+
+     % Calculate ground track in rectangular coordinates
+     x_ground = -Rsphere*cos(theta);   % (m)
+     y_ground = -Rsphere*sin(theta);   % (m)
+
+     % Save orbit and ground-track data to file
+     fname = "/home/sab/gsegrafix/data_files/orbit.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%15.5e %15.5e %15.5e %15.5e\n", ...
+            [x_orbit'/1000;  y_orbit'/1000; ...
+             x_ground'/1000; y_ground'/1000]);
+     fclose(fid);
+
+     % Interpolate to find angle from perigee for equal time increments
+     time_interp = (0:600:period)';   % (sec)
+     x_orbit_interp  = interp1(time, x_orbit,  time_interp);
+     y_orbit_interp  = interp1(time, y_orbit,  time_interp);
+     x_ground_interp = interp1(time, x_ground, time_interp);
+     y_ground_interp = interp1(time, y_ground, time_interp);
+
+     % Save data for lines connecting corresponding points on orbit and ground track
+     fname = "/home/sab/gsegrafix/data_files/orbit_lines.txt";
+     fid = fopen(fname, "w");
+     npts_interp = length(time_interp);
+     for ( i = 1:npts_interp )
+        fprintf(fid, "%15.5e %15.5e\n", x_orbit_interp(i)/1000,  y_orbit_interp(i)/1000);
+        fprintf(fid, "%15.5e %15.5e\n", x_ground_interp(i)/1000, y_ground_interp(i)/1000);
+        fprintf(fid, "%15s %15s\n", '*', '*');
+     end
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/orbit.txt"
+     file_format             "%lf %lf %*lf %*lf"
+     plot_type               "points"
+     plot_style              lr
+
+     file_name               "/home/sab/gsegrafix/data_files/orbit.txt"
+     file_format             "%*lf %*lf %lf %lf"
+     plot_type               "points"
+     plot_style              lr
+
+     file_name               "/home/sab/gsegrafix/data_files/orbit_lines.txt"
+     file_format             "%lf %lf"
+     plot_type               "points"
+     plot_style              lr
+
+     axis_type               "linear"
+     axis_scale              "equal"
+
+     axis_limits             * * -20000 30000
+
+     grid                    ls
+
+     xlabel                  "x axis (km)"
+     ylabel                  "y axis (km)"
+     title                   "Orbit"
+
+     symbol_coords           3.46440e+04 1.51700e+04
+     symbol_style            Ck6
+
+     text_string             "Earth"
+     text_coords_abs         0.0 0.0
+     text_anchor             "center"
+
+     text_string             "satellite"
+     text_coords_abs         3.51440e+04 1.56700e+04
+     text_anchor             "southwest"
+
+     text_string             "Orbit parameters:"
+     text_string             "period = 12 hr"
+     text_string             "eccentricity = 0.7"
+     text_coords_rel         0.03 0.97
+     text_anchor             "northwest"
+
+     text_string             "Lines between orbit and ground track drawn"
+     text_string             "at equal time increments of 10 minutes."
+     text_string             "Much more time spent near apogee than"
+     text_string             "near perigee."
+     text_coords_rel         0.97 0.97
+     text_anchor             "northeast"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/orbit.png" alt="orbit.png" class="image_examples" />
+</div>
+
+<h3 id="Example_3">Example 3. Two-dimensional loglog plot: y = 1.001 + sin(x)</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % loglog.m
+     %
+     % Calculates data for y = 1.001 + sin(x).
+
+     x = 2*pi*(0.01:0.01:10);
+     y = 1.001 + sin(x);
+
+     fname = "/home/sab/gsegrafix/data_files/loglog.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10.5f  %10.5f\n", [x; y]);
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/loglog.txt"
+     file_format             "%lf %lf"
+     plot_type               "points"
+     plot_style              lk
+
+     axis_type               "loglog"
+
+     minor_ticks             "on"
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     title                   "y = 1.001 + sin(x)"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/loglog.png" alt="loglog.png" class="image_examples" />
+</div>
+
+<h3 id="Example_4">Example 4. Histogram: gaussian (normal) distribution</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % gauss.m
+     %
+     % Calculates data for gaussian distribution
+     % with mean = 0 and standard deviation = 1.
+
+     % Calculate data for gaussian distribution
+     mean = 0.0;
+     sigma = 1.0;
+     npts = 1000;
+     randn("seed", 213);
+     x = mean + sigma*randn(npts,1);
+     fname = "/home/sab/gsegrafix/data_files/gauss_data.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10.5f\n", x);
+     fclose(fid);
+
+     % Calculate histogram bin width
+     [xsort, indices] = sort(x);
+     q = zeros(3,1);
+     for ( i = 1:3 )
+        index = round(i*0.25*npts);
+        q(i) = xsort(index);
+     end
+     % See section on bin_width keyword for formulas and references below.
+     % binwidth = 3.49*sigma/npts^(1.0/3.0);   % Scott
+     binwidth = 2.0*(q(3) - q(1))/npts^(1.0/3.0);   % Freedman, Diaconis
+
+     % Calculate theoretical gaussian distribution
+     x1 = (mean - 3.5*sigma);
+     x2 = (mean + 3.5*sigma);
+     x = x1 + (0:0.005:1)*(x2 - x1);
+     f1 = 1.0/(sigma*sqrt(2*pi));
+     y = f1*exp(-(x-mean).^2/(2*sigma^2));
+     y = 100.0*binwidth*y;   % percent occurrences
+     fname = "/home/sab/gsegrafix/data_files/gauss_theory.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10.5f %10.5f\n", [x; y]);
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/gauss_data.txt"
+     file_format             "%lf"
+     plot_type               "histogram"
+     plot_style              Bk
+
+     file_name               "/home/sab/gsegrafix/data_files/gauss_theory.txt"
+     file_format             "%lf %lf"
+     plot_type               "points"
+     plot_style              lr
+
+     axis_type               "linear"
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "percent occurrences"
+     title                   "Gaussian Distribution"
+
+     line_coords             -1.645 -1.645 0 2.790
+     line_style              dr
+     line_coords             1.645  1.645 0 2.790
+     line_style              dr
+
+     legend_string           "data"
+     legend_string           "100*binwidth*p(x)"
+     legend_coords_rel       0.95 0.95
+     legend_anchor           "northeast"
+
+     text_string             "probability distribution"
+     text_string             "p(x) = [1/{sqrt(2\xCF\x80)*a}]*exp(-t\xC2\xB2)"
+     text_string             "t = (x - b)/{sqrt(2)*a}"
+     text_string             "a = standard deviation"
+     text_string             "b = mean"
+     text_string             ""
+     text_string             "mean = 0"
+     text_string             "standard deviation = 1"
+     text_string             "1000 samples"
+     text_string             ""
+     text_string             "90% of samples contained"
+     text_string             "between dashed lines at"
+     text_string             "x = \xC2\xB1 1.645"
+     text_coords_rel         0.05 0.95
+     text_anchor             "northwest"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/gauss.png" alt="gauss.png" class="image_examples" />
+</div>
+
+<h3 id="Example_5">Example 5. Polar plot: gain of half-wavelength dipole antenna</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % dipole.m
+     %
+     % Calculates normalized gain pattern of half-wavelength dipole antenna.
+     %
+     % Reference:
+     %    Constantine Balanis, <i>Antenna Theory,</i>
+     %    John Wiley &amp; Sons, 1982, pp. 120 - 121
+
+     % Define constants
+     deg2rad = pi/180;   % (rad/deg)
+     DBL_MIN = 2.22507e-308;
+
+     % Calculate dipole antenna gain pattern
+     lambda = 1;
+     l = lambda/2;
+     k = 2*pi/lambda;
+     f1 = k*l/2;
+     theta = (0:1:360)'*deg2rad;
+     npts = length(theta);
+     gain = zeros(npts,1);
+     gain(1)   = DBL_MIN;
+     gain(181) = DBL_MIN;
+     gain(361) = DBL_MIN;
+     indices = [(2:180) (182:360)]';
+     gain(indices) = ((cos(f1*cos(theta(indices))) - cos(f1))./sin(theta(indices))).^2;
+     gain_dB = 10*log10(gain);
+
+     % Calculate 3-dB beam width
+     theta_3dB = interp1(gain_dB(1:181), theta(1:181), -3)/deg2rad;
+     beamwidth_3dB = 2*(90 - theta_3dB);
+
+     % Save data
+     fname = "/home/sab/gsegrafix/data_files/dipole.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%13.5e %13.5e %13.5e\n", [theta'; gain'; gain_dB']);
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/dipole.txt"
+     file_format             "%lf %*lf %lf"
+     plot_type               "points"
+     plot_style              lk
+
+     axis_type               "polar"
+
+     axis_limits             * * -40 0
+
+     minor_ticks             "on"
+
+     grid                    ls
+
+     xlabel                  "\xCE\xB8 (deg)"
+     ylabel                  "gain (dB)"
+     title                   "Normalized Gain of Half-Wavelength Dipole Antenna"
+
+     text_string             "Angles measured from antenna axis."
+     text_string             "3-dB beam width = 78 deg"
+     text_coords_rel         1.0 0.1
+     text_anchor             "northwest"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/dipole.png" alt="dipole.png" class="image_examples" />
+</div>
+
+<h3 id="Example_6">Example 6. Three-dimensional points plot: logarithmic helix</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % loghelix.m
+     %
+     % Calculates data for 3d logarithmic helix plot.
+
+     theta = 20*pi*(0:0.001:1);
+     r = exp(0.05*theta);
+     x = r.*cos(theta);
+     y = r.*sin(theta);
+     z = theta;
+
+     fname = "/home/sab/gsegrafix/data_files/loghelix.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10.5f %10.5f %10.5f\n", [x; y; z]);
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/loghelix.txt"
+     file_format             "%lf %lf %lf"
+     plot_type               "points"
+     plot_style              lr
+
+     axis_type               "3d"
+
+     axis_limits             -25 25 -25 25 * *
+
+     view3d                  30 30
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "z axis"
+     title                   "Logarithmic Helix"
+
+     text_string             "theta = 20*pi*(0:0.001:1)"
+     text_string             "r = exp(0.05*theta)"
+     text_string             "x = r*cos(theta)"
+     text_string             "y = r*sin(theta)"
+     text_string             "z = theta"
+     text_coords_rel         1.10 0.50
+     text_anchor             "west"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/loghelix.png" alt="loghelix.png" class="image_examples" />
+</div>
+
+<h3 id="Example_7">Example 7. Three-dimensional mesh plot: z = sin(r)/r</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % sinc3d.m
+     %
+     % Calculates data for sin(r)/r plot, where r = sqrt(x^2 + y^2).
+
+     x = (-10:0.5:10) + 0.00001;
+     y = (-10:0.5:10) + 0.00001;
+     nx = length(x);
+     ny = length(y);
+     z = zeros(nx, ny);
+     for ( i = 1:nx )
+        for ( j = 1:ny )
+           r = sqrt(x(i)^2 + y(j)^2);
+           z(i,j) = sin(r)/r;
+        end
+     end
+
+     fname = "/home/sab/gsegrafix/data_files/sinc3d.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10d%10d", nx, ny);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.2f", x);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.2f", y);
+     fprintf(fid, "\n");
+     for ( i = 1:nx )
+        for ( j = 1:ny )
+           fprintf(fid, "%10.5f", z(i,j));
+        end
+        fprintf(fid, "\n");
+     end
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/sinc3d.txt"
+     plot_type               "mesh"
+     plot_style              "auto" 0xC0
+
+     axis_type               "3d"
+
+     view3d                  30 30
+
+     minor_ticks             "on"
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "z axis"
+     title                   "z = sin(r)/r"
+
+     text_string             "r = sqrt(x\xC2\xB2 + y\xC2\xB2)"
+     text_coords_rel         1.10 0.50
+     text_anchor             "west"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+A separate data file, <a href="./help_files/sinc3d.txt">sinc3d.txt</a>, and parameter file, <a href="./help_files/sinc3d_param.txt">sinc3d_param.txt</a>, for this example can be copied and used to reproduce this plot. The path in the argument for the <code>file_name</code> keyword must correspond to the path where the data file, sinc3d.txt, is saved.
+</p>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/sinc3d.png" alt="sinc3d.png" class="image_examples" />
+</div>
+
+<h3 id="Example_8">Example 8. Three-dimensional contour plot: magnitude of complex function log(z)</h3>
+<p>
+The data file was created using Octave with the following code:
+</p>
+<pre>     % logz.m
+     %
+     % Calculates data for magnitude of log(z) plot, where z = x + i*y.
+
+     x = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     y = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     nx = length(x);
+     ny = length(y);
+     mag = zeros(nx,ny);
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           z = x(ii) + i*y(jj);
+           mag(ii,jj) = abs(log(z));
+        end
+     end
+
+     fname = "/home/sab/gsegrafix/data_files/logz.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10d%10d", nx, ny);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", x);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", y);
+     fprintf(fid, "\n");
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           fprintf(fid, "%15.5e", mag(ii,jj));
+        end
+        fprintf(fid, "\n");
+     end
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/logz.txt"
+     plot_type               "contour"
+     plot_style              0xD0723EFF 0x9C562EFF   # copper, dark copper
+
+     axis_type               "3d"
+
+     axis_limits             * * * * * 4
+
+     view3d                  300 30
+
+     contours                21
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "|log(z)|"
+     title                   "Magnitude of Complex Function log(z)"
+
+     text_string             "z = r*exp(i*theta)"
+     text_string             "log(z) = log(r) + i*theta"
+     text_coords_rel         1.10 0.50
+     text_anchor             "west"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/logzcontour3d.png" alt="logzcontour3d.png" class="image_examples" />
+</div>
+
+<h3 id="Example_9">Example 9. Two-dimensional contour plot: magnitude of complex function log(z)</h3>
+<p>
+The data file was created using Octave with the following code (same as for Example 8 above):
+</p>
+<pre>     % logz.m
+     %
+     % Calculates data for magnitude of log(z) plot, where z = x + i*y.
+
+     x = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     y = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     nx = length(x);
+     ny = length(y);
+     mag = zeros(nx,ny);
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           z = x(ii) + i*y(jj);
+           mag(ii,jj) = abs(log(z));
+        end
+     end
+
+     fname = "/home/sab/gsegrafix/data_files/logz.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10d%10d", nx, ny);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", x);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", y);
+     fprintf(fid, "\n");
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           fprintf(fid, "%15.5e", mag(ii,jj));
+        end
+        fprintf(fid, "\n");
+     end
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/logz.txt"
+     plot_type               "contour"
+     plot_style              k
+
+     axis_type               "linear"
+
+     axis_limits             -3 3 -2.25 2.25 0 4
+
+     contours                9
+
+     minor_ticks             "on"
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     title                   "Magnitude of Complex Function log(z)"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/logzcontour2d.png" alt="logzcontour2d.png" class="image_examples" />
+</div>
+
+<h3 id="Example_10">Example 10. Two-dimensional color plot: magnitude of complex function log(z)</h3>
+<p>
+The data file was created using Octave with the following code (same as for Example 8 above):
+</p>
+<pre>     % logz.m
+     %
+     % Calculates data for magnitude of log(z) plot, where z = x + i*y.
+
+     x = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     y = [(-3.0:0.1:-0.1) -0.05 -0.02 0.02 0.05 (0.1:0.1:3.0)];
+     nx = length(x);
+     ny = length(y);
+     mag = zeros(nx,ny);
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           z = x(ii) + i*y(jj);
+           mag(ii,jj) = abs(log(z));
+        end
+     end
+
+     fname = "/home/sab/gsegrafix/data_files/logz.txt";
+     fid = fopen(fname, "w");
+     fprintf(fid, "%10d%10d", nx, ny);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", x);
+     fprintf(fid, "\n");
+     fprintf(fid, "%10.3f", y);
+     fprintf(fid, "\n");
+     for ( ii = 1:nx )
+        for ( jj = 1:ny )
+           fprintf(fid, "%15.5e", mag(ii,jj));
+        end
+        fprintf(fid, "\n");
+     end
+     fclose(fid);
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/logz.txt"
+     plot_type               "color"
+     plot_style              "bilinear"
+
+     axis_type               "linear"
+
+     axis_limits             * * * * * 4
+
+     grid                    ls
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "|log(z)|"
+     title                   "Magnitude of Complex Function log(z)"
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+If there are z-coordinate values that are less than the value of zmin or greater than the value of zmax specified with an <code>axis_limits</code> keyword, these areas of the plot will have colors corresponding to zmin or zmax (blue or red), respectively.
+</p>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/logzcolor2d.png" alt="logzcolor2d.png" class="image_examples" />
+</div>
+
+<h3 id="Example_11">Example 11. Two-dimensional color plot: Mandelbrot set</h3>
+<p>
+The data file was created using the following C program (Octave was too slow):
+</p>
+<pre>     /*******************************************************************************
+     *
+     * Calculate Mandelbrot set.
+     *
+     * The Mandelbrot set consists of a set of points, c = x + iy, in the complex
+     * plane. These points must meet the condition that the magnitude of the complex
+     * number z does not grow without bound when the following operation is performed
+     * a large number of times:
+     *    z(n+1) = z(n)*z(n) + c, where z(0) = 0 + i0.
+     * When the data are plotted, colors are assigned to values of c according to the
+     * number of times the above operation had to be performed to cause the magnitude
+     * of z to exceed a specified value, in this case 2. The color black is assigned
+     * to points in the Mandelbrot set.
+     *
+     * Compile: gcc -Wall mandelbrot.c -o mandelbrot -lm
+     *
+     *******************************************************************************/
+
+     #include &lt;complex.h&gt;
+     #include &lt;math.h&gt;
+     #include &lt;string.h&gt;
+     #include &lt;stdio.h&gt;
+
+     int main ( int argc, char *argv[] )
+        {
+        /* Declare variables */
+        unsigned int i, j, nx, ny, count[500][500], count_max;
+        double xmin, xmax, ymin, ymax, x[500], y[500], rmax;
+        _Complex double c, z;
+        char fname[] = "/home/sab/gsegrafix/data_files/mandelbrot.txt";
+        FILE *fid;
+
+        /* Define limits of calculation */
+        xmin = -2.0;
+        xmax =  0.5;
+        ymin = -1.25;
+        ymax =  1.25;
+
+        /* Calculate x and y values for plotting area 433 pixels by 433 pixels */
+        nx = 433;
+        for ( i=1; i&lt;=nx; i++ )
+           x[i-1] = xmin + ( (double) (i - 1)/ (double) (nx - 1))*(xmax - xmin);
+
+        ny = 433;
+        for ( j=1; j&lt;=ny; j++ )
+           y[j-1] = ymin + ( (double) (j - 1)/ (double) (ny - 1))*(ymax - ymin);
+
+        /* Set values of count to 0 for each value of x and y */
+        for ( i=1; i&lt;=nx; i++ )
+           for ( j=1; j&lt;=ny; j++ )
+              count[i-1][j-1] = 0;
+
+        /* Calculate Mandelbrot-set data */
+        rmax = 2.0;
+        count_max = 10000;
+        for ( i=1; i&lt;=nx; i++ )
+           for ( j=1; j&lt;=ny; j++ )
+              {
+              c = x[i-1] + I*y[j-1];
+              z = 0.0;
+              while ( (cabs(z) &lt;= rmax) &amp;&amp; (count[i-1][j-1] &lt;= count_max) )
+                 {
+                 z = z*z + c;
+                 count[i-1][j-1]++;
+                 }
+              if ( count[i-1][j-1] > 0 )
+                 count[i-1][j-1]--;
+              }
+
+        /* Save data to file */
+        fid = fopen(fname, "w");
+        fprintf(fid, "%u %u", nx, ny);
+        fprintf(fid, "\n");
+        for ( i=1; i&lt;=nx; i++ )
+           fprintf(fid, "%+10.7f ", x[i-1]);
+        fprintf(fid, "\n");
+        for ( j=1; j&lt;=ny; j++ )
+           fprintf(fid, "%+10.7f ", y[j-1]);
+        fprintf(fid, "\n");
+        for ( i=1; i&lt;=nx; i++ )
+           {
+           for ( j=1; j&lt;=ny; j++ )
+              {
+              if ( count[i-1][j-1] == count_max )
+                 fprintf(fid, "%5d ", -1);
+              else
+                 fprintf(fid, "%5u ", count[i-1][j-1]);
+              }
+           fprintf(fid, "\n");
+           }
+        fclose(fid);
+
+        return 0;
+        }
+</pre>
+<p>
+The parameter file looks like the following:
+</p>
+<pre>     file_name               "/home/sab/gsegrafix/data_files/mandelbrot.txt"
+     plot_type               "color"
+     plot_style              "bilinear" 0 10000
+
+     axis_type               "linear"
+
+     axis_limits             -2.0 0.5 -1.25 1.25 0 100   # Changing zmax causes different
+                                                         # color assignments for points
+                                                         # outside the Mandelbrot set.
+
+     xlabel                  "x axis"
+     ylabel                  "y axis"
+     zlabel                  "count"
+     title                   "Mandelbrot Set"   # Points in the Mandelbrot set are black.
+
+     font_size_date_time     12
+     font_size_legend        12
+     font_size_text          12
+     font_size_tick_labels   14
+     font_size_axis_labels   16
+     font_size_title         18
+</pre>
+<p>
+The resulting plot is:
+</p>
+
+<div class="image_alignment">
+<img src="./figures/mandelbrot.png" alt="mandelbrot.png" class="image_examples" />
+</div>
+
+<p>
+<a href="#Contents">Contents</a>
+</p>
+
+</body>
+</html>
+
